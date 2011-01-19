@@ -1,0 +1,11 @@
+<form action="hp" method="post">
+  Your class: <%= select_tag(:row_class, @classes) %><br />
+  Your level: <input type="text" name="level" size="5" value="10"><br />
+  Your CON: <input type="text" name="con" size="5" value="20"><br />
+  Your DEX: <input type="text" name="dex" size="5" value="20"><br />
+  Your STR: <input type="text" name="str" size="5" value="20"><br />
+  <br/>
+  <p>Just change the values and you will have your HP</p>
+</form>
+<br/>
+Your HP is <span id="resul">0</span>
