@@ -54,14 +54,30 @@ function calculateHP() {
     break;
   default: //do nothing
   }
-  $('#resul').text(base_hp + row_class_hp);
+  $('#status_hp').text(base_hp + row_class_hp);
+}
+
+//Formula (atleast for caster classes):
+//
+//  magic = ((INT - 20) * 3.1) + ((WIS - 20) * 2)
+//
+//source: http://forum.ruinsofwar.com/viewtopic.php?f=27&t=6719
+function calculateMagicPower() {
+  var values = {};
+  $.each($('form').serializeArray(), function(i, field) {
+    values[field.name] = field.value;
+  });
+  var row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+  $('#status_magic_power').text(row_class_magic);
 }
 
 $(document).ready(function() {
   $("input[type='text']").change( function() {
     calculateHP();
+    calculateMagicPower();
   });
   $('select').change( function() {
     calculateHP();
+    calculateMagicPower();
   });
 });
