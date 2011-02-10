@@ -67,7 +67,53 @@ function calculateMagicPower() {
   $.each($('form').serializeArray(), function(i, field) {
     values[field.name] = field.value;
   });
-  var row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+  var row_class_magic = 0;
+  switch(values['row_class']) {
+  case 'warrior':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'attacker':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'defender':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'templar':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'assassin':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'archer':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'gunner':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'shadow':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'sorcerer':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'enchanter':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'rune':
+    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    break;
+  case 'priest':
+    row_class_magic = Math.floor(((values['int'] - 20) * 1) + ((values['wis'] - 20) * 1.5));
+    break;
+  case 'cleric':
+    row_class_magic = Math.floor(((values['int'] - 20) * 1) + ((values['wis'] - 20) * 1.5));
+    break;
+  case 'life':
+    row_class_magic = Math.floor(((values['int'] - 20) * 1) + ((values['wis'] - 20) * 1.5));
+    break;
+  default:
+    //do nothing
+  }
   $('#status_magic_power').text(row_class_magic);
 }
 
