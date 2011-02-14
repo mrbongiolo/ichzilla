@@ -7,8 +7,11 @@ require "sinatra"
 require "erb"
 
 helpers do
-  def select_tag(name, collection)
-    result = "<select name=\"#{name.to_s}\">\n"
+  def select_tag(name, collection, *args)
+    options = args.last.is_a?(Hash) ? args.last : { }
+    options_for_select = ""
+    options_for_select += "class=\"#{options[:class]}\"" if options[:class]
+    result = "<select id=\"#{name.to_s.downcase}\" name=\"#{name.to_s}\" #{options_for_select} >\n"
     collection.each do |c|
       result += "<option value=\"#{c.to_s.downcase}\">#{c.to_s.capitalize}</option>\n"
     end

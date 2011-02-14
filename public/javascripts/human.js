@@ -1,5 +1,5 @@
-function Enchanter(lvl, str, con, dex, inte, wis) {
-  RowClass.call(this, lvl, str, con, dex, inte, wis);
+function Enchanter(lvl) {
+  RowClass.call(this, lvl);
 }
 
 Enchanter.prototype = new RowClass( );
@@ -58,4 +58,13 @@ Enchanter.prototype.calculateAndSetInte = function( ) {
       }
     }
   }
+}
+
+Enchanter.prototype.toString = function( ) {
+  return "Class Name: Enchanter, Level: " + this.lvl + 
+    ", Stats: {str: " + this.str +
+    ", con: " + this.con + 
+    ", dex: " + this.dex +
+    ", int: " + this.inte +
+    ", wis: " + this.wis + "}";
 }

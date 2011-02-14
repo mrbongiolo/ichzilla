@@ -1,10 +1,10 @@
-function RowClass(lvl, str, con, dex, inte, wis) {
+function RowClass(lvl) {
   this.lvl = lvl;
-  this.str = str;
-  this.con = con;
-  this.dex = dex;
-  this.inte = inte;
-  this.wis = wis;
+  this.str = 20;
+  this.con = 20;
+  this.dex = 20;
+  this.inte = 20;
+  this.wis = 20;
   this.bonusPoints = 0;
   this.calculateAndSetBonusPoints( );
 }
@@ -63,4 +63,13 @@ RowClass.prototype.calculateAndSetInte = function( ) {
 
 RowClass.prototype.calculateAndSetWis = function( ) {
   this.wis = 20;
+}
+
+
+RowClass.prototype.calculateStats = function( ) {
+  this.calculateAndSetStr( );
+  this.calculateAndSetCon( );
+  this.calculateAndSetDex( );
+  this.calculateAndSetInte( );
+  this.calculateAndSetWis( );
 }

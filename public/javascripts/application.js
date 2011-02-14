@@ -143,14 +143,11 @@ function calculateMagicPower() {
 //
 //Function used to call all calculation logic
 //
-function calculate() {
-  var values = {};
-  $.each($('form').serializeArray(), function(i, field) {
-    values[field.name] = field.value;
-  });
+function calculate(values) {
   switch(values['row_class']) {
   case 'warrior':
-    row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
+    myChar = new Enchanter(values['level']);
+    myChar.calculateStats( );
     break;
   case 'attacker':
     row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
@@ -196,13 +193,23 @@ function calculate() {
   }
 }
 
+function setStatValues() {
+
+}
+
 $(document).ready(function() {
-  $("input[type='text']").change( function() {
-    calculateHP();
-    calculateMagicPower();
+  myChar = new RowClass($('#level').attr('value'));
+  $('#row_class').change( function() {
+    //Do awesome stuff here
   });
-  $('select').change( function() {
-    calculateHP();
-    calculateMagicPower();
+  $("#level").change( function() {
+    //calculateHP();
+    //calculateMagicPower();
+    calculate(values);
+    alert(myChar.toString());
+  });
+  $('.stat_selector').change( function() {
+    //calculateHP();
+    //calculateMagicPower();
   });
 });

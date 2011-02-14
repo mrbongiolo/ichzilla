@@ -1,13 +1,11 @@
-<form action="hp" method="post">
+<form>
   Your class: <%= select_tag(:row_class, @classes) %><br />
-  Your level: <input type="text" name="level" size="5" value="10"><br />
-  Your CON: <input type="text" name="con" size="5" value="20"><br />
-  Your DEX: <input type="text" name="dex" size="5" value="20"><br />
-  Your STR: <input type="text" name="str" size="5" value="20"><br />
-  Your INT: <input type="text" name="int" size="5" value="20"><br />
-  Your WIS: <input type="text" name="wis" size="5" value="20"><br />
-  <br/>
-  <p>Just change the values and you will have your HP</p>
+  Your level: <input id="level" type="text" name="level" size="5" value="1"><br />
+  STR: <%= select_tag(:str, [20], :class => "stat_selector") %><br />
+  CON: <%= select_tag(:con, [20], :class => "stat_selector") %><br />
+  DEX: <%= select_tag(:dex, [20], :class => "stat_selector") %><br />
+  INT: <%= select_tag(:int, [20], :class => "stat_selector") %><br />
+  WIS: <%= select_tag(:wis, [20], :class => "stat_selector") %><br />
 </form>
 <br/>
 Your HP is <span id="status_hp">0</span><br/>
