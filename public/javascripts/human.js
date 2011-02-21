@@ -1,3 +1,17 @@
+//
+//---- HUMAN CLASSES ----//
+//
+//This file contain all the classes
+//for the human race.
+//The base calculations are inherited
+//from RowClass.
+//
+
+//
+//---- ENCHANTER ----//
+//
+
+//Initilaze Enchanter and inherit from RowClass
 function Enchanter(lvl) {
   RowClass.call(this, lvl);
 }
@@ -24,24 +38,21 @@ delete Enchanter.prototype.bonusPoints;
 
 Enchanter.prototype.constructor = RowClass;
 
-//
-//---- Overridding Some Methods
-//
-
-RowClass.prototype.usedBPDex = function( ) {
+//Override methods used in Enchanter class
+Enchanter.prototype.usedBPDex = function( ) {
   return (this.dex - this.minDex) * 2; 
 }
 
-RowClass.prototype.usedBPInte = function( ) {
+Enchanter.prototype.usedBPInte = function( ) {
   return (this.inte - this.minInte) * 2;
 }
 
 Enchanter.prototype.calculateAndSetMaxDex = function( ) {
-  this.maxDex = this.minDex + (this.bonusPoints / 2);
+  this.maxDex = this.dex + (this.bonusPoints / 2);
 }
 
 Enchanter.prototype.calculateAndSetMaxInte = function( ) {
-  this.maxInte = this.minInte + (this.bonusPoints / 2);
+  this.maxInte = this.inte + (this.bonusPoints / 2);
 }
 
 Enchanter.prototype.calculateAndSetMinDex = function( ) {
@@ -78,3 +89,73 @@ Enchanter.prototype.calculateAndSetMinInte = function( ) {
   }
 }
 
+Enchanter.prototype.calculateHP = function( ) {
+  //call the overridded method from RowClass
+  var baseHP = RowClass.prototype.calculateHP.apply(this);
+  //calculate class HP and return the value
+  return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
+}
+
+//
+//---- SORCERER CLASS ----//
+//
+//
+//Initilaze Enchanter and inherit from RowClass
+function Sorcerer(lvl) {
+  RowClass.call(this, lvl);
+}
+
+Sorcerer.prototype = new RowClass( );
+
+delete Sorcerer.prototype.lvl;
+delete Sorcerer.prototype.str;
+delete Sorcerer.prototype.con;
+delete Sorcerer.prototype.dex
+delete Sorcerer.prototype.inte;
+delete Sorcerer.prototype.wis;
+delete Sorcerer.prototype.minStr;
+delete Sorcerer.prototype.minCon;
+delete Sorcerer.prototype.minDex
+delete Sorcerer.prototype.minInte;
+delete Sorcerer.prototype.minWis;
+delete Sorcerer.prototype.maxStr;
+delete Sorcerer.prototype.maxCon;
+delete Sorcerer.prototype.maxDex
+delete Sorcerer.prototype.maxInte;
+delete Sorcerer.prototype.maxWis;
+delete Sorcerer.prototype.bonusPoints;
+
+Sorcerer.prototype.constructor = RowClass;
+
+//Override methods used in Enchanter class
+Sorcerer.prototype.usedBPDex = function( ) {
+  return (this.dex - this.minDex) * 2; 
+}
+
+Sorcerer.prototype.usedBPInte = function( ) {
+  return (this.inte - this.minInte) * 2;
+}
+
+Sorcerer.prototype.calculateAndSetMaxDex = function( ) {
+  this.maxDex = this.dex + (this.bonusPoints / 2);
+}
+
+Sorcerer.prototype.calculateAndSetMaxInte = function( ) {
+  this.maxInte = this.inte + (this.bonusPoints / 2);
+}
+
+Sorcerer.prototype.calculateAndSetMinDex = function( ) {
+  if(this.lvl < 10) {
+    this.minDex = this.lvl - 1 + 20;
+  } else {
+    this.minDex = this.lvl - 1 + 20;
+  }
+}
+
+Sorcerer.prototype.calculateAndSetMinInte = function( ) {
+  if(this.lvl < 10) {
+    this.minInte = 20;
+  } else {
+    this.minInte = (((this.lvl - 1) * 2) + 20);
+  }
+}

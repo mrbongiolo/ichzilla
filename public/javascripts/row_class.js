@@ -1,11 +1,5 @@
 function RowClass(lvl) {
   this.lvl = lvl;
-  //stats
-  this.str = 20;
-  this.con = 20;
-  this.dex = 20;
-  this.inte = 20;
-  this.wis = 20;
   //min stats
   this.minStr = 20;
   this.minCon = 20;
@@ -18,6 +12,24 @@ function RowClass(lvl) {
   this.maxDex = 20;
   this.maxInte = 20;
   this.maxWis = 20;
+  //Calculate Min
+  this.calculateAndSetMinStr( );
+  this.calculateAndSetMinCon( );
+  this.calculateAndSetMinDex( );
+  this.calculateAndSetMinInte( );
+  this.calculateAndSetMinWis( );
+  //normal stats
+  this.str = this.minStr;
+  this.con = this.minCon;
+  this.dex = this.minDex;
+  this.inte = this.minInte;
+  this.wis = this.minWis;
+  //Calculate Max
+  this.calculateAndSetMaxStr( );
+  this.calculateAndSetMaxCon( );
+  this.calculateAndSetMaxDex( );
+  this.calculateAndSetMaxInte( );
+  this.calculateAndSetMaxWis( );
   //other stuff
   this.bonusPoints = 0;
   this.calculateAndSetBonusPoints( );
@@ -28,11 +40,12 @@ RowClass.prototype.calculateAndSetBonusPoints = function( ) {
     this.bonusPoints = 0;
   } else {
     this.bonusPoints = (((this.lvl -1) * 4) + 10);
-    this.bonusPoints = this.bonusPoints - this.usedBPStr();
-    this.bonusPoints = this.bonusPoints - this.usedBPCon();
-    this.bonusPoints = this.bonusPoints - this.usedBPDex();
-    this.bonusPoints = this.bonusPoints - this.usedBPInte();
-    this.bonusPoints = this.bonusPoints - this.usedBPWis();
+    this.bonusPoints = this.bonusPoints -
+      this.usedBPStr() -
+      this.usedBPCon() -
+      this.usedBPDex() -
+      this.usedBPInte() -
+      this.usedBPWis();
   }
 }
 
@@ -61,9 +74,7 @@ RowClass.prototype.usedBPWis = function( ) {
 //
 
 RowClass.prototype.calculateAndSetMaxStr = function( ) {
-  alert(this.maxStr + "//" + this.str + "//" + this.bonusPoints);
   this.maxStr = this.str + this.bonusPoints;
-  alert(this.maxStr);
 }
 
 RowClass.prototype.calculateAndSetMaxCon = function( ) {
@@ -83,7 +94,7 @@ RowClass.prototype.calculateAndSetMaxWis = function( ) {
 }
 
 //
-//---- Calculate Stat Values ----//
+//---- Calculate MIN Stat Values ----//
 //
 
 RowClass.prototype.calculateAndSetMinStr = function( ) {
@@ -120,6 +131,12 @@ RowClass.prototype.calculateStats = function( ) {
   this.calculateAndSetMaxDex( );
   this.calculateAndSetMaxInte( );
   this.calculateAndSetMaxWis( );
+}
+
+//Calculate HP
+RowClass.prototype.calculateHP = function( ) {
+  return Math.floor((150 + (25 * this.lvl) + (this.con -20) * 0.15 * this.lvl) + 
+                   ((this.dex - 20) * 0.05 * this.lvl));
 }
 
 RowClass.prototype.toString = function( ) {
