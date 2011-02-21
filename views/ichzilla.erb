@@ -1,11 +1,14 @@
 <form>
   Your class: <%= select_tag(:row_class, @classes) %><br />
   Your level: <input id="level" type="text" name="level" size="5" value="1"><br />
-  STR: <%= select_tag(:str, [20], :class => "stat_selector") %><br />
-  CON: <%= select_tag(:con, [20], :class => "stat_selector") %><br />
-  DEX: <%= select_tag(:dex, [20], :class => "stat_selector") %><br />
-  INT: <%= select_tag(:int, [20], :class => "stat_selector") %><br />
-  WIS: <%= select_tag(:wis, [20], :class => "stat_selector") %><br />
+  <br />
+  Bonus Points: <span id="bonus_points">0</span><br />
+  <br />
+  STR: <%= select_tag(:str, [], :class => "stat_selector") %><br />
+  CON: <%= select_tag(:con, [], :class => "stat_selector") %><br />
+  DEX: <%= select_tag(:dex, [], :class => "stat_selector") %><br />
+  INT: <%= select_tag(:int, [], :class => "stat_selector") %><br />
+  WIS: <%= select_tag(:wis, [], :class => "stat_selector") %><br />
 </form>
 <br/>
 Your HP is <span id="status_hp">0</span><br/>

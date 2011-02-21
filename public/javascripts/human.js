@@ -10,6 +10,16 @@ delete Enchanter.prototype.con;
 delete Enchanter.prototype.dex
 delete Enchanter.prototype.inte;
 delete Enchanter.prototype.wis;
+delete Enchanter.prototype.minStr;
+delete Enchanter.prototype.minCon;
+delete Enchanter.prototype.minDex
+delete Enchanter.prototype.minInte;
+delete Enchanter.prototype.minWis;
+delete Enchanter.prototype.maxStr;
+delete Enchanter.prototype.maxCon;
+delete Enchanter.prototype.maxDex
+delete Enchanter.prototype.maxInte;
+delete Enchanter.prototype.maxWis;
 delete Enchanter.prototype.bonusPoints;
 
 Enchanter.prototype.constructor = RowClass;
@@ -18,53 +28,53 @@ Enchanter.prototype.constructor = RowClass;
 //---- Overridding Some Methods
 //
 
-Enchanter.prototype.maxDex = function( ) {
-  return this.dex + (this.bonusPoints / 2);
+RowClass.prototype.usedBPDex = function( ) {
+  return (this.dex - this.minDex) * 2; 
 }
 
-Enchanter.prototype.maxInte = function( ) {
-  return this.inte + (this.bonusPoints / 2);
+RowClass.prototype.usedBPInte = function( ) {
+  return (this.inte - this.minInte) * 2;
 }
 
-Enchanter.prototype.calculateAndSetDex = function( ) {
+Enchanter.prototype.calculateAndSetMaxDex = function( ) {
+  this.maxDex = this.minDex + (this.bonusPoints / 2);
+}
+
+Enchanter.prototype.calculateAndSetMaxInte = function( ) {
+  this.maxInte = this.minInte + (this.bonusPoints / 2);
+}
+
+Enchanter.prototype.calculateAndSetMinDex = function( ) {
   if(this.lvl < 10) {
-    this.lvl = this.lvl - 1 + 20;
+    this.minDex = this.lvl - 1 + 20;
   } else {
     var i = 1;
-    this.dex = 20;
+    this.minDex = 20;
     for(i = 1; i < this.lvl; i++) {
       if(i % 2 == 0) {
-        this.dex = this.dex + 1;
+        this.minDex = this.minDex + 1;
       } 
       if(i % 2 == 1) {
-        this.dex = this.dex + 2;
+        this.minDex = this.minDex + 2;
       }
     }
   }
 }
 
-Enchanter.prototype.calculateAndSetInte = function( ) {
+Enchanter.prototype.calculateAndSetMinInte = function( ) {
   if(this.lvl < 10) {
-    this.inte = 20;
+    this.minInte = 20;
   } else {
     var i = 1;
-    this.inte = 20;
+    this.minInte = 20;
     for(i = 1; i < this.lvl; i++) {
       if(i % 2 == 0) {
-        this.inte = this.inte + 2;
+        this.minInte = this.minInte + 2;
       }
       if(i % 2 == 1) {
-        this.inte = this.inte + 1;
+        this.minInte = this.minInte + 1;
       }
     }
   }
 }
 
-Enchanter.prototype.toString = function( ) {
-  return "Class Name: Enchanter, Level: " + this.lvl + 
-    ", Stats: {str: " + this.str +
-    ", con: " + this.con + 
-    ", dex: " + this.dex +
-    ", int: " + this.inte +
-    ", wis: " + this.wis + "}";
-}

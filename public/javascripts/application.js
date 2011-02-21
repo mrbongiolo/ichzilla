@@ -148,6 +148,8 @@ function calculate(values) {
   case 'warrior':
     myChar = new Enchanter(values['level']);
     myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
     break;
   case 'attacker':
     row_class_magic = Math.floor(((values['int'] - 20) * 3.1) + ((values['wis'] - 20) * 2));
@@ -193,8 +195,117 @@ function calculate(values) {
   }
 }
 
-function setStatValues() {
+function setMinMaxStatValues( ) {
+  $('#str').html('');
+  $('#con').html('');
+  $('#dex').html('');
+  $('#int').html('');
+  $('#wis').html('');
+ 
+  alert('starting t');
+  //STR
+  var auxArr = [];
+  for(i = myChar.minStr; i <= myChar.maxStr; i++) {
+    auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+  }
+  $('#str').append(auxArr.join(''));
+  alert('STR set');
+  //CON
+  auxArr = [];
+  for(i = myChar.minCon; i <= myChar.maxCon; i++) {
+    auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+  }
+  $('#con').append(auxArr.join(''));
+  alert('CON set');
+  //DEX
+  auxArr = [];
+  for(i = myChar.minDex; i <= myChar.maxDex; i++) {
+    auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+  }
+  $('#dex').append(auxArr.join(''));
+  alert('DEX set');
+  //INT
+  auxArr = [];
+  for(i = myChar.minInte; i <= myChar.maxInte; i++) {
+    auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+  }
+  $('#int').append(auxArr.join(''));
+  alert('INT set');
+  //WIS
+  auxArr = [];
+  for(i = myChar.minWis; i <= myChar.maxWis; i++) {
+    auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+  }
+  $('#wis').append(auxArr.join(''));
+  alert('WIS set');
+}
 
+function setMinMaxStatValues2() {
+  var actualMaxStr = document.getElementById('str').length + myChar.minStr - 1;
+  var actualMaxCon = document.getElementById('con').length + myChar.minCon - 1;
+  var actualMaxDex = document.getElementById('dex').length + myChar.minDex - 1;
+  var actualMaxInte = document.getElementById('int').length + myChar.minInte - 1;
+  var actualMaxWis = document.getElementById('wis').length + myChar.minWis - 1;
+  //STR
+  var auxArr = [];
+  if(myChar.maxStr > actualMaxStr) {
+    for(i = (actualMaxStr + 1); i <= myChar.maxStr; i++) {
+      auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+    }
+    $('#str').append(auxArr.join(''));
+  } else if(myChar.maxStr < actualMaxStr) {
+    for(i = actualMaxStr; i > myChar.maxStr; i--) {
+      $('#str option[value=' + i + ']').remove();
+    }
+  }
+  //CON
+  auxArr = []
+  if(myChar.maxCon > actualMaxCon) {
+    for(i = (actualMaxCon + 1); i <= myChar.maxCon; i++) {
+      auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+    }
+    $('#con').append(auxArr.join(''));
+  } else if(myChar.maxCon < actualMaxCon) {
+    for(i = actualMaxCon; i > myChar.maxCon; i--) {
+      $('#con option[value=' + i + ']').remove();
+    }
+  }
+  //DEX
+  auxArr = []
+  if(myChar.maxDex > actualMaxDex) {
+    for(i = (actualMaxDex + 1); i <= myChar.maxDex; i++) {
+      auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+    }
+    $('#dex').append(auxArr.join(''));
+  } else if(myChar.maxDex < actualMaxDex) {
+    for(i = actualMaxDex; i > myChar.maxDex; i--) {
+      $('#dex option[value=' + i + ']').remove();
+    }
+  }
+  //INT
+  auxArr = []
+  if(myChar.maxInte > actualMaxInte) {
+    for(i = (actualMaxInte + 1); i <= myChar.maxInte; i++) {
+      auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+    }
+    $('#int').append(auxArr.join(''));
+  } else if(myChar.maxInte < actualMaxInte) {
+    for(i = actualMaxInte; i > myChar.maxInte; i--) {
+      $('#int option[value=' + i + ']').remove();
+    }
+  }
+  //WIS
+  auxArr = []
+  if(myChar.maxWis > actualMaxWis) {
+    for(i = (actualMaxWis + 1); i <= myChar.maxWis; i++) {
+      auxArr[i] = "<option value='" + i + "'>" + i + "</option>";
+    }
+    $('#wis').append(auxArr.join(''));
+  } else if(myChar.maxWis < actualMaxWis) {
+    for(i = actualMaxWis; i > myChar.maxWis; i--) {
+      $('#wis option[value=' + i + ']').remove();
+    }
+  }
 }
 
 $(document).ready(function() {
@@ -203,12 +314,36 @@ $(document).ready(function() {
     //Do awesome stuff here
   });
   $("#level").change( function() {
-    //calculateHP();
-    //calculateMagicPower();
+    var values = {};
+    $.each($('form').serializeArray(), function(i, field) {
+      values[field.name] = field.value;
+    });
     calculate(values);
-    alert(myChar.toString());
+    //alert(myChar.toString());
   });
   $('.stat_selector').change( function() {
+    alert('FOOOOOOOO');
+    var values = {};
+    $.each($('form').serializeArray(), function(i, field) {
+      values[field.name] = field.value;
+    });
+    myChar.str = values['str'];
+    myChar.con = values['con'];
+    myChar.dex = values['dex'];
+    myChar.inte = values['int'];
+    myChar.wis = values['wis'];
+
+    myChar.calculateAndSetBonusPoints();
+    $('#bonus_points').text(myChar.bonusPoints);
+    alert(myChar.toString( ));
+    myChar.calculateStats( );
+    
+    alert(myChar.toString( ));
+    alert('BEEEE');
+    setMinMaxStatValues( );
+    
+    alert('BAAAAAAR');
+    alert(myChar.toString( ));
     //calculateHP();
     //calculateMagicPower();
   });

@@ -1,10 +1,24 @@
 function RowClass(lvl) {
   this.lvl = lvl;
+  //stats
   this.str = 20;
   this.con = 20;
   this.dex = 20;
   this.inte = 20;
   this.wis = 20;
+  //min stats
+  this.minStr = 20;
+  this.minCon = 20;
+  this.minDex = 20;
+  this.minInte = 20;
+  this.minWis = 20;
+  //max stats
+  this.maxStr = 20;
+  this.maxCon = 20;
+  this.maxDex = 20;
+  this.maxInte = 20;
+  this.maxWis = 20;
+  //other stuff
   this.bonusPoints = 0;
   this.calculateAndSetBonusPoints( );
 }
@@ -14,62 +28,116 @@ RowClass.prototype.calculateAndSetBonusPoints = function( ) {
     this.bonusPoints = 0;
   } else {
     this.bonusPoints = (((this.lvl -1) * 4) + 10);
+    this.bonusPoints = this.bonusPoints - this.usedBPStr();
+    this.bonusPoints = this.bonusPoints - this.usedBPCon();
+    this.bonusPoints = this.bonusPoints - this.usedBPDex();
+    this.bonusPoints = this.bonusPoints - this.usedBPInte();
+    this.bonusPoints = this.bonusPoints - this.usedBPWis();
   }
 }
 
+RowClass.prototype.usedBPStr = function( ) {
+  return this.str - this.minStr;
+}
+
+RowClass.prototype.usedBPCon = function( ) {
+  return this.con - this.minCon;
+}
+
+RowClass.prototype.usedBPDex = function( ) {
+  return this.dex - this.minDex;
+}
+
+RowClass.prototype.usedBPInte = function( ) {
+  return this.inte - this.minInte;
+}
+
+RowClass.prototype.usedBPWis = function( ) {
+  return this.wis - this.minWis;
+}
+
 //
-//---- Calculate MAX Stat Value ----//
+//---- Calculate and Set MAX Stat Value ----//
 //
 
-RowClass.prototype.maxStr = function( ) {
-  return this.str + this.bonusPoints;
+RowClass.prototype.calculateAndSetMaxStr = function( ) {
+  alert(this.maxStr + "//" + this.str + "//" + this.bonusPoints);
+  this.maxStr = this.str + this.bonusPoints;
+  alert(this.maxStr);
 }
 
-RowClass.prototype.maxCon = function( ) {
-  return this.con + this.bonusPoints;
+RowClass.prototype.calculateAndSetMaxCon = function( ) {
+  this.maxCon = this.con + this.bonusPoints;
 }
 
-RowClass.prototype.maxDex = function( ) {
-  return this.dex + this.bonusPoints;
+RowClass.prototype.calculateAndSetMaxDex = function( ) {
+  this.maxDex = this.dex + this.bonusPoints;
 }
 
-RowClass.prototype.maxInte = function( ) {
-  return this.inte + this.bonusPoints;
+RowClass.prototype.calculateAndSetMaxInte = function( ) {
+  this.maxInte = this.inte + this.bonusPoints;
 }
 
-RowClass.prototype.maxWis = function( ) {
-  return this.wis + this.bonusPoints;
+RowClass.prototype.calculateAndSetMaxWis = function( ) {
+  this.maxWis = this.wis + this.bonusPoints;
 }
 
 //
 //---- Calculate Stat Values ----//
 //
 
-RowClass.prototype.calculateAndSetStr = function( ) {
-  this.str = 20;
+RowClass.prototype.calculateAndSetMinStr = function( ) {
+  this.minStr = 20;
 }
 
-RowClass.prototype.calculateAndSetCon = function( ) {
-  this.con = 20;
+RowClass.prototype.calculateAndSetMinCon = function( ) {
+  this.minCon = 20;
 }
 
-RowClass.prototype.calculateAndSetDex = function( ) {
-  this.dex = 20;
+RowClass.prototype.calculateAndSetMinDex = function( ) {
+  this.minDex = 20;
 }
 
-RowClass.prototype.calculateAndSetInte = function( ) {
-  this.inte = 20;
+RowClass.prototype.calculateAndSetMinInte = function( ) {
+  this.minInte = 20;
 }
 
-RowClass.prototype.calculateAndSetWis = function( ) {
-  this.wis = 20;
+RowClass.prototype.calculateAndSetMinWis = function( ) {
+  this.minWis = 20;
 }
 
 
 RowClass.prototype.calculateStats = function( ) {
-  this.calculateAndSetStr( );
-  this.calculateAndSetCon( );
-  this.calculateAndSetDex( );
-  this.calculateAndSetInte( );
-  this.calculateAndSetWis( );
+  //Calculate Min
+  this.calculateAndSetMinStr( );
+  this.calculateAndSetMinCon( );
+  this.calculateAndSetMinDex( );
+  this.calculateAndSetMinInte( );
+  this.calculateAndSetMinWis( );
+  //Calculate Max
+  this.calculateAndSetMaxStr( );
+  this.calculateAndSetMaxCon( );
+  this.calculateAndSetMaxDex( );
+  this.calculateAndSetMaxInte( );
+  this.calculateAndSetMaxWis( );
+}
+
+RowClass.prototype.toString = function( ) {
+  return "Class Name: Row Class, Level: " + this.lvl + 
+    ", Bonus Points: " + this.bonusPoints +
+    ", Stats: {str: " + this.str +
+    ", con: " + this.con + 
+    ", dex: " + this.dex +
+    ", int: " + this.inte +
+    ", wis: " + this.wis + "}" +
+    ", MIN Stats: {str: " + this.minStr +
+    ", con: " + this.minCon + 
+    ", dex: " + this.minDex +
+    ", int: " + this.minInte +
+    ", wis: " + this.minWis + "}" +
+    ", MAX Stats: {str: " + this.maxStr +
+    ", con: " + this.maxCon + 
+    ", dex: " + this.maxDex +
+    ", int: " + this.maxInte +
+    ", wis: " + this.maxWis + "}";
 }
