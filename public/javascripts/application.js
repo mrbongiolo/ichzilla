@@ -181,6 +181,11 @@ function calculate(values) {
   case 'priest':
     break;
   case 'cleric':
+    myChar = new Cleric(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   case 'life':
     break;

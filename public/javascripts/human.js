@@ -102,7 +102,7 @@ Enchanter.prototype.calculateMagicPower = function( ) {
 //---- SORCERER CLASS ----//
 //
 //
-//Initilaze Enchanter and inherit from RowClass
+//Initilaze Sorcerer and inherit from RowClass
 function Sorcerer(lvl) {
   RowClass.call(this, lvl);
 }
@@ -128,15 +128,8 @@ delete Sorcerer.prototype.maxWis;
 delete Sorcerer.prototype.bonusPoints;
 
 Sorcerer.prototype.constructor = RowClass;
-Enchanter.prototype.calculateHP = function( ) {
-  var baseHP = RowClass.prototype.calculateHP.apply(this);
-  return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
-}
 
-Enchanter.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
-}
-//Override methods used in Enchanter class
+//Override methods used for this class
 Sorcerer.prototype.usedBPDex = function( ) {
   return (this.dex - this.minDex) * 2; 
 }
@@ -176,4 +169,77 @@ Sorcerer.prototype.calculateHP = function( ) {
 
 Sorcerer.prototype.calculateMagicPower = function( ) {
   return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
+}
+
+//
+//---- CLERIC CLASS ----//
+//
+//
+//Initilaze Cleric and inherit from RowClass
+function Cleric(lvl) {
+  RowClass.call(this, lvl);
+}
+
+Cleric.prototype = new RowClass( );
+
+delete Cleric.prototype.lvl;
+delete Cleric.prototype.str;
+delete Cleric.prototype.con;
+delete Cleric.prototype.dex
+delete Cleric.prototype.inte;
+delete Cleric.prototype.wis;
+delete Cleric.prototype.minStr;
+delete Cleric.prototype.minCon;
+delete Cleric.prototype.minDex
+delete Cleric.prototype.minInte;
+delete Cleric.prototype.minWis;
+delete Cleric.prototype.maxStr;
+delete Cleric.prototype.maxCon;
+delete Cleric.prototype.maxDex
+delete Cleric.prototype.maxInte;
+delete Cleric.prototype.maxWis;
+delete Cleric.prototype.bonusPoints;
+
+Cleric.prototype.constructor = RowClass;
+
+//Override methods used for this class
+Cleric.prototype.usedBPCon = function( ) {
+  return (this.con - this.minCon) * 2; 
+}
+
+Cleric.prototype.usedBPWis = function( ) {
+  return (this.wis - this.minWis) * 2;
+}
+
+Cleric.prototype.calculateAndSetMaxCon = function( ) {
+  this.maxCon = this.con + (this.bonusPoints / 2);
+}
+
+Cleric.prototype.calculateAndSetMaxWis = function( ) {
+  this.maxWis = this.wis + (this.bonusPoints / 2);
+}
+
+Cleric.prototype.calculateAndSetMinCon = function( ) {
+  if(this.lvl < 10) {
+    this.minCon = this.lvl - 1 + 20;
+  } else {
+    this.minCon = this.lvl - 1 + 20;
+  }
+}
+
+Cleric.prototype.calculateAndSetMinWis = function( ) {
+  if(this.lvl < 10) {
+    this.minWis = 20;
+  } else {
+    this.minWis = (((this.lvl - 1) * 2) + 20);
+  }
+}
+
+Cleric.prototype.calculateHP = function( ) {
+  var baseHP = RowClass.prototype.calculateHP.apply(this);
+  return baseHP + Math.floor((this.con -20) * 0.2 * this.lvl);
+}
+
+Cleric.prototype.calculateMagicPower = function( ) {
+  return ((this.int - 20) * 1) + ((this.wis - 20) * 1.5)
 }
