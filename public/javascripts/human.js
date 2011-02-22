@@ -364,26 +364,43 @@ delete Defender.prototype.maxInte;
 delete Defender.prototype.maxWis;
 delete Defender.prototype.bonusPoints;
 
-Priest.prototype.constructor = RowClass;
+Defender.prototype.constructor = RowClass;
 
 //Override methods used for this class
-Priest.prototype.usedBPCon = function( ) {
+Defender.prototype.usedBPStr = function( ) {
+  return (this.str - this.minStr) * 2;
+}
+
+Defender.prototype.usedBPCon = function( ) {
   return (this.con - this.minCon) * 2; 
 }
 
-Priest.prototype.usedBPWis = function( ) {
-  return (this.wis - this.minWis) * 2;
+Defender.prototype.calculateAndSetMaxStr = function( ) {
+  this.maxStr = this.str + (this.bonusPoints / 2);
 }
 
-Priest.prototype.calculateAndSetMaxCon = function( ) {
+Defender.prototype.calculateAndSetMaxCon = function( ) {
   this.maxCon = this.con + (this.bonusPoints / 2);
 }
 
-Priest.prototype.calculateAndSetMaxWis = function( ) {
-  this.maxWis = this.wis + (this.bonusPoints / 2);
+Defender.prototype.calculateAndSetMinStr = function( ) {
+  if(this.lvl < 10) {
+    this.minStr = 20;
+  } else {
+    var i = 1;
+    this.minStr = 20;
+    for(i = 1; i < this.lvl; i++) {
+      if(i % 2 == 0) {
+        this.minStr = this.minStr + 2;
+      }
+      if(i % 2 == 1) {
+        this.minStr = this.minStr + 1;
+      }
+    }
+  }
 }
 
-Priest.prototype.calculateAndSetMinCon = function( ) {
+Defender.prototype.calculateAndSetMinCon = function( ) {
   if(this.lvl < 10) {
     this.minCon = this.lvl - 1 + 20;
   } else {
@@ -400,28 +417,11 @@ Priest.prototype.calculateAndSetMinCon = function( ) {
   }
 }
 
-Priest.prototype.calculateAndSetMinWis = function( ) {
-  if(this.lvl < 10) {
-    this.minWis = 20;
-  } else {
-    var i = 1;
-    this.minWis = 20;
-    for(i = 1; i < this.lvl; i++) {
-      if(i % 2 == 0) {
-        this.minWis = this.minWis + 2;
-      }
-      if(i % 2 == 1) {
-        this.minWis = this.minWis + 1;
-      }
-    }
-  }
-}
-
-Priest.prototype.calculateHP = function( ) {
+Defender.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
-  return baseHP + Math.floor((this.con -20) * 0.2 * this.lvl);
+  return baseHP + Math.floor((this.con -20) * 0.4 * this.lvl);
 }
 
-Priest.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 1) + ((this.wis - 20) * 1.5)
+Defender.prototype.calculateMagicPower = function( ) {
+  return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
 }
