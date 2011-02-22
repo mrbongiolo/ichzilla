@@ -172,62 +172,62 @@ Rune.prototype.calculateMagicPower = function( ) {
 }
 
 //
-//---- CLERIC CLASS ----//
+//---- LIFE CLASS ----//
 //
 //
-//Initilaze Cleric and inherit from RowClass
-function Cleric(lvl) {
+//Initilaze Life and inherit from RowClass
+function Life(lvl) {
   RowClass.call(this, lvl);
 }
 
-Cleric.prototype = new RowClass( );
+Life.prototype = new RowClass( );
 
-delete Cleric.prototype.lvl;
-delete Cleric.prototype.str;
-delete Cleric.prototype.con;
-delete Cleric.prototype.dex
-delete Cleric.prototype.inte;
-delete Cleric.prototype.wis;
-delete Cleric.prototype.minStr;
-delete Cleric.prototype.minCon;
-delete Cleric.prototype.minDex
-delete Cleric.prototype.minInte;
-delete Cleric.prototype.minWis;
-delete Cleric.prototype.maxStr;
-delete Cleric.prototype.maxCon;
-delete Cleric.prototype.maxDex
-delete Cleric.prototype.maxInte;
-delete Cleric.prototype.maxWis;
-delete Cleric.prototype.bonusPoints;
+delete Life.prototype.lvl;
+delete Life.prototype.str;
+delete Life.prototype.con;
+delete Life.prototype.dex
+delete Life.prototype.inte;
+delete Life.prototype.wis;
+delete Life.prototype.minStr;
+delete Life.prototype.minCon;
+delete Life.prototype.minDex
+delete Life.prototype.minInte;
+delete Life.prototype.minWis;
+delete Life.prototype.maxStr;
+delete Life.prototype.maxCon;
+delete Life.prototype.maxDex
+delete Life.prototype.maxInte;
+delete Life.prototype.maxWis;
+delete Life.prototype.bonusPoints;
 
-Cleric.prototype.constructor = RowClass;
+Life.prototype.constructor = RowClass;
 
 //Override methods used for this class
-Cleric.prototype.usedBPCon = function( ) {
-  return (this.con - this.minCon) * 2; 
+Life.prototype.usedBPDex = function( ) {
+  return (this.dex - this.minDex) * 2; 
 }
 
-Cleric.prototype.usedBPWis = function( ) {
+Life.prototype.usedBPWis = function( ) {
   return (this.wis - this.minWis) * 2;
 }
 
-Cleric.prototype.calculateAndSetMaxCon = function( ) {
-  this.maxCon = this.con + (this.bonusPoints / 2);
+Life.prototype.calculateAndSetMaxDex = function( ) {
+  this.maxDex = this.dex + (this.bonusPoints / 2);
 }
 
-Cleric.prototype.calculateAndSetMaxWis = function( ) {
+Life.prototype.calculateAndSetMaxWis = function( ) {
   this.maxWis = this.wis + (this.bonusPoints / 2);
 }
 
-Cleric.prototype.calculateAndSetMinCon = function( ) {
+Life.prototype.calculateAndSetMinDex = function( ) {
   if(this.lvl < 10) {
-    this.minCon = this.lvl - 1 + 20;
+    this.minDex = this.lvl - 1 + 20;
   } else {
-    this.minCon = this.lvl - 1 + 20;
+    this.minDex = this.lvl - 1 + 20;
   }
 }
 
-Cleric.prototype.calculateAndSetMinWis = function( ) {
+Life.prototype.calculateAndSetMinWis = function( ) {
   if(this.lvl < 10) {
     this.minWis = 20;
   } else {
@@ -235,12 +235,12 @@ Cleric.prototype.calculateAndSetMinWis = function( ) {
   }
 }
 
-Cleric.prototype.calculateHP = function( ) {
+Life.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
-  return baseHP + Math.floor((this.con -20) * 0.2 * this.lvl);
+  return baseHP + Math.floor((this.dex - 20) * 0.2 * this.lvl);
 }
 
-Cleric.prototype.calculateMagicPower = function( ) {
+Life.prototype.calculateMagicPower = function( ) {
   return ((this.int - 20) * 1) + ((this.wis - 20) * 1.5)
 }
 

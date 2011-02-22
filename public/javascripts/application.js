@@ -219,6 +219,11 @@ function calculate(values) {
     alert(myChar.toString());
     break;
   case 'life':
+    myChar = new Life(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   default: //do nothing
   }
