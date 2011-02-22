@@ -63,6 +63,7 @@ function showHP( ) {
   $('#status_hp').text(myChar.calculateHP());
 }
 
+
 //---- MAGIC POWER ----//
 //
 //Formula:
@@ -147,6 +148,11 @@ function calculateMagicPower() {
 function calculate(values) {
   switch(values['row_class']) {
   case 'warrior':
+    myChar = new Warrior(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   case 'attacker':
     break;
@@ -160,6 +166,11 @@ function calculate(values) {
   case 'templar':
     break;
   case 'assassin':
+    myChar = new Assassin(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   case 'archer':
     break;

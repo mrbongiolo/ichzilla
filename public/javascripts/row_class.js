@@ -133,7 +133,15 @@ RowClass.prototype.calculateStats = function( ) {
   this.calculateAndSetMaxWis( );
 }
 
-//Calculate HP
+////---- Calculate HP ----//
+//
+//Formula:
+//  
+//  HP = Base HP + Class HP
+//
+//source: http://forum.ruinsofwar.com/viewtopic.php?f=27&t=6719
+//
+//this is the Base HP calculation
 RowClass.prototype.calculateHP = function( ) {
   return Math.floor((150 + (25 * this.lvl) + (this.con -20) * 0.15 * this.lvl) + 
                    ((this.dex - 20) * 0.05 * this.lvl));
@@ -151,6 +159,9 @@ RowClass.prototype.calculateHP = function( ) {
 //
 //  Acolity classes:
 //  magic = ((INT - 20) * 1) + ((WIS - 20) * 1.5)
+//
+//  Rogue classes:
+//  STILL NEED TO FIND OUT
 //
 //source: http://forum.ruinsofwar.com/viewtopic.php?f=27&t=6719
 //

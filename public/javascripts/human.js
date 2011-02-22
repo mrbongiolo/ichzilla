@@ -425,3 +425,224 @@ Defender.prototype.calculateHP = function( ) {
 Defender.prototype.calculateMagicPower = function( ) {
   return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
 }
+
+//
+//---- WARRIOR CLASS ----//
+//
+//
+//Initilaze Warrior and inherit from RowClass
+function Warrior(lvl) {
+  RowClass.call(this, lvl);
+}
+
+Warrior.prototype = new RowClass( );
+
+delete Warrior.prototype.lvl;
+delete Warrior.prototype.str;
+delete Warrior.prototype.con;
+delete Warrior.prototype.dex
+delete Warrior.prototype.inte;
+delete Warrior.prototype.wis;
+delete Warrior.prototype.minStr;
+delete Warrior.prototype.minCon;
+delete Warrior.prototype.minDex
+delete Warrior.prototype.minInte;
+delete Warrior.prototype.minWis;
+delete Warrior.prototype.maxStr;
+delete Warrior.prototype.maxCon;
+delete Warrior.prototype.maxDex
+delete Warrior.prototype.maxInte;
+delete Warrior.prototype.maxWis;
+delete Warrior.prototype.bonusPoints;
+
+Warrior.prototype.constructor = RowClass;
+
+//Override methods used for this class
+Warrior.prototype.usedBPStr = function( ) {
+  return (this.str - this.minStr) * 2;
+}
+
+Warrior.prototype.usedBPCon = function( ) {
+  return (this.con - this.minCon) * 2; 
+}
+
+Warrior.prototype.calculateAndSetMaxStr = function( ) {
+  this.maxStr = this.str + (this.bonusPoints / 2);
+}
+
+Warrior.prototype.calculateAndSetMaxCon = function( ) {
+  this.maxCon = this.con + (this.bonusPoints / 2);
+}
+
+Warrior.prototype.calculateAndSetMinStr = function( ) {
+  if(this.lvl < 10) {
+    this.minStr = 20;
+  } else {
+    this.minStr = (((this.lvl - 1) * 2) + 20);
+  }
+}
+
+Warrior.prototype.calculateAndSetMinCon = function( ) {
+  if(this.lvl < 10) {
+    this.minCon = this.lvl - 1 + 20;
+  } else {
+    this.minCon = this.lvl - 1 + 20;
+  }
+}
+
+Warrior.prototype.calculateHP = function( ) {
+  var baseHP = RowClass.prototype.calculateHP.apply(this);
+  return baseHP + Math.floor((this.con -20) * 0.35 * this.lvl);
+}
+
+Warrior.prototype.calculateMagicPower = function( ) {
+  return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
+}
+
+//
+//---- ASSASSIN CLASS ----//
+//
+//
+//Initilaze Assassin and inherit from RowClass
+function Assassin(lvl) {
+  RowClass.call(this, lvl);
+}
+
+Assassin.prototype = new RowClass( );
+
+delete Assassin.prototype.lvl;
+delete Assassin.prototype.str;
+delete Assassin.prototype.con;
+delete Assassin.prototype.dex
+delete Assassin.prototype.inte;
+delete Assassin.prototype.wis;
+delete Assassin.prototype.minStr;
+delete Assassin.prototype.minCon;
+delete Assassin.prototype.minDex
+delete Assassin.prototype.minInte;
+delete Assassin.prototype.minWis;
+delete Assassin.prototype.maxStr;
+delete Assassin.prototype.maxCon;
+delete Assassin.prototype.maxDex
+delete Assassin.prototype.maxInte;
+delete Assassin.prototype.maxWis;
+delete Assassin.prototype.bonusPoints;
+
+Assassin.prototype.constructor = RowClass;
+
+//Override methods used for this class
+Assassin.prototype.usedBPStr = function( ) {
+  return (this.str - this.minStr) * 2;
+}
+
+Assassin.prototype.usedBPDex = function( ) {
+  return (this.dex - this.minDex) * 2; 
+}
+
+Assassin.prototype.calculateAndSetMaxStr = function( ) {
+  this.maxStr = this.str + (this.bonusPoints / 2);
+}
+
+Assassin.prototype.calculateAndSetMaxDex = function( ) {
+  this.maxDex = this.dex + (this.bonusPoints / 2);
+}
+
+Assassin.prototype.calculateAndSetMinStr = function( ) {
+  if(this.lvl < 10) {
+    this.minStr = 20;
+  } else {
+    this.minStr = this.lvl - 1 + 20;
+  }
+}
+
+Assassin.prototype.calculateAndSetMinDex = function( ) {
+  if(this.lvl < 10) {
+    this.minDex = this.lvl - 1 + 20;
+  } else {
+    this.minDex = (((this.lvl - 1) * 2) + 20);
+  }
+}
+
+Assassin.prototype.calculateHP = function( ) {
+  var baseHP = RowClass.prototype.calculateHP.apply(this);
+  return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
+}
+
+//Still need to find out how the rogue class calculate Magic Power
+Assassin.prototype.calculateMagicPower = function( ) {
+  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
+}
+
+//
+//---- ARCHER CLASS ----//
+//
+//
+//Initilaze Archer and inherit from RowClass
+function Archer(lvl) {
+  RowClass.call(this, lvl);
+}
+
+Archer.prototype = new RowClass( );
+
+delete Archer.prototype.lvl;
+delete Archer.prototype.str;
+delete Archer.prototype.con;
+delete Archer.prototype.dex
+delete Archer.prototype.inte;
+delete Archer.prototype.wis;
+delete Archer.prototype.minStr;
+delete Archer.prototype.minCon;
+delete Archer.prototype.minDex
+delete Archer.prototype.minInte;
+delete Archer.prototype.minWis;
+delete Archer.prototype.maxStr;
+delete Archer.prototype.maxCon;
+delete Archer.prototype.maxDex
+delete Archer.prototype.maxInte;
+delete Archer.prototype.maxWis;
+delete Archer.prototype.bonusPoints;
+
+Archer.prototype.constructor = RowClass;
+
+//Override methods used for this class
+Archer.prototype.usedBPStr = function( ) {
+  return (this.str - this.minStr) * 2;
+}
+
+Archer.prototype.usedBPDex = function( ) {
+  return (this.dex - this.minDex) * 2; 
+}
+
+Archer.prototype.calculateAndSetMaxStr = function( ) {
+  this.maxStr = this.str + (this.bonusPoints / 2);
+}
+
+Archer.prototype.calculateAndSetMaxDex = function( ) {
+  this.maxDex = this.dex + (this.bonusPoints / 2);
+}
+
+Archer.prototype.calculateAndSetMinStr = function( ) {
+  if(this.lvl < 10) {
+    this.minStr = 20;
+  } else {
+    this.minStr = this.lvl - 1 + 20;
+  }
+}
+
+Archer.prototype.calculateAndSetMinDex = function( ) {
+  if(this.lvl < 10) {
+    this.minDex = this.lvl - 1 + 20;
+  } else {
+    this.minDex = (((this.lvl - 1) * 2) + 20);
+  }
+}
+
+Archer.prototype.calculateHP = function( ) {
+  var baseHP = RowClass.prototype.calculateHP.apply(this);
+  return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
+}
+
+//Still need to find out how the rogue class calculate Magic Power
+Archer.prototype.calculateMagicPower = function( ) {
+  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
+}
