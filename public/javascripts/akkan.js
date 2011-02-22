@@ -427,54 +427,54 @@ Defender.prototype.calculateMagicPower = function( ) {
 }
 
 //
-//---- WARRIOR CLASS ----//
+//---- ATTACKER CLASS ----//
 //
 //
-//Initilaze Warrior and inherit from RowClass
-function Warrior(lvl) {
+//Initilaze Attacker and inherit from RowClass
+function Attacker(lvl) {
   RowClass.call(this, lvl);
 }
 
-Warrior.prototype = new RowClass( );
+Attacker.prototype = new RowClass( );
 
-delete Warrior.prototype.lvl;
-delete Warrior.prototype.str;
-delete Warrior.prototype.con;
-delete Warrior.prototype.dex
-delete Warrior.prototype.inte;
-delete Warrior.prototype.wis;
-delete Warrior.prototype.minStr;
-delete Warrior.prototype.minCon;
-delete Warrior.prototype.minDex
-delete Warrior.prototype.minInte;
-delete Warrior.prototype.minWis;
-delete Warrior.prototype.maxStr;
-delete Warrior.prototype.maxCon;
-delete Warrior.prototype.maxDex
-delete Warrior.prototype.maxInte;
-delete Warrior.prototype.maxWis;
-delete Warrior.prototype.bonusPoints;
+delete Attacker.prototype.lvl;
+delete Attacker.prototype.str;
+delete Attacker.prototype.con;
+delete Attacker.prototype.dex
+delete Attacker.prototype.inte;
+delete Attacker.prototype.wis;
+delete Attacker.prototype.minStr;
+delete Attacker.prototype.minCon;
+delete Attacker.prototype.minDex
+delete Attacker.prototype.minInte;
+delete Attacker.prototype.minWis;
+delete Attacker.prototype.maxStr;
+delete Attacker.prototype.maxCon;
+delete Attacker.prototype.maxDex
+delete Attacker.prototype.maxInte;
+delete Attacker.prototype.maxWis;
+delete Attacker.prototype.bonusPoints;
 
-Warrior.prototype.constructor = RowClass;
+Attacker.prototype.constructor = RowClass;
 
 //Override methods used for this class
-Warrior.prototype.usedBPStr = function( ) {
+Attacker.prototype.usedBPStr = function( ) {
   return (this.str - this.minStr) * 2;
 }
 
-Warrior.prototype.usedBPCon = function( ) {
+Attacker.prototype.usedBPCon = function( ) {
   return (this.con - this.minCon) * 2; 
 }
 
-Warrior.prototype.calculateAndSetMaxStr = function( ) {
+Attacker.prototype.calculateAndSetMaxStr = function( ) {
   this.maxStr = this.str + (this.bonusPoints / 2);
 }
 
-Warrior.prototype.calculateAndSetMaxCon = function( ) {
+Attacker.prototype.calculateAndSetMaxCon = function( ) {
   this.maxCon = this.con + (this.bonusPoints / 2);
 }
 
-Warrior.prototype.calculateAndSetMinStr = function( ) {
+Attacker.prototype.calculateAndSetMinStr = function( ) {
   if(this.lvl < 10) {
     this.minStr = 20;
   } else {
@@ -482,7 +482,7 @@ Warrior.prototype.calculateAndSetMinStr = function( ) {
   }
 }
 
-Warrior.prototype.calculateAndSetMinCon = function( ) {
+Attacker.prototype.calculateAndSetMinCon = function( ) {
   if(this.lvl < 10) {
     this.minCon = this.lvl - 1 + 20;
   } else {
@@ -490,12 +490,12 @@ Warrior.prototype.calculateAndSetMinCon = function( ) {
   }
 }
 
-Warrior.prototype.calculateHP = function( ) {
+Attacker.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.con -20) * 0.35 * this.lvl);
 }
 
-Warrior.prototype.calculateMagicPower = function( ) {
+Attacker.prototype.calculateMagicPower = function( ) {
   return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
 }
 
