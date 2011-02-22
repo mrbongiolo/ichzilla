@@ -95,7 +95,7 @@ Enchanter.prototype.calculateHP = function( ) {
 }
 
 Enchanter.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
+  return ((this.inte - 20) * 3.1) + ((this.wis - 20) * 2)
 }
 
 //
@@ -168,7 +168,7 @@ Sorcerer.prototype.calculateHP = function( ) {
 }
 
 Sorcerer.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
+  return ((this.inte - 20) * 3.1) + ((this.wis - 20) * 2)
 }
 
 //
@@ -241,7 +241,7 @@ Cleric.prototype.calculateHP = function( ) {
 }
 
 Cleric.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 1) + ((this.wis - 20) * 1.5)
+  return ((this.inte - 20) * 1) + ((this.wis - 20) * 1.5)
 }
 
 //
@@ -332,7 +332,7 @@ Priest.prototype.calculateHP = function( ) {
 }
 
 Priest.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 1) + ((this.wis - 20) * 1.5)
+  return ((this.inte - 20) * 1) + ((this.wis - 20) * 1.5)
 }
 
 //
@@ -423,7 +423,7 @@ Defender.prototype.calculateHP = function( ) {
 }
 
 Defender.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return ((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
@@ -496,7 +496,7 @@ Warrior.prototype.calculateHP = function( ) {
 }
 
 Warrior.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return ((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
@@ -570,7 +570,7 @@ Assassin.prototype.calculateHP = function( ) {
 
 //Still need to find out how the rogue class calculate Magic Power
 Assassin.prototype.calculateMagicPower = function( ) {
-  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return 0; //((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
@@ -662,5 +662,5 @@ Archer.prototype.calculateHP = function( ) {
 
 //Still need to find out how the rogue class calculate Magic Power
 Archer.prototype.calculateMagicPower = function( ) {
-  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return 0; //((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }

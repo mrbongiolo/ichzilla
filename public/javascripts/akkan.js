@@ -77,7 +77,7 @@ Rune.prototype.calculateHP = function( ) {
 }
 
 Rune.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
+  return ((this.inte - 20) * 3.1) + ((this.wis - 20) * 2)
 }
 
 //
@@ -150,7 +150,7 @@ Life.prototype.calculateHP = function( ) {
 }
 
 Life.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 1) + ((this.wis - 20) * 1.5)
+  return ((this.inte - 20) * 1) + ((this.wis - 20) * 1.5)
 }
 
 //
@@ -224,7 +224,7 @@ Shadow.prototype.calculateHP = function( ) {
 
 //Still need to find out how the rogue class calculate Magic Power
 Shadow.prototype.calculateMagicPower = function( ) {
-  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return 0; //((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
@@ -315,7 +315,7 @@ Templar.prototype.calculateHP = function( ) {
 }
 
 Templar.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return ((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
@@ -388,7 +388,7 @@ Attacker.prototype.calculateHP = function( ) {
 }
 
 Attacker.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return ((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
@@ -480,5 +480,5 @@ Gunner.prototype.calculateHP = function( ) {
 
 //Still need to find out how the rogue class calculate Magic Power
 Gunner.prototype.calculateMagicPower = function( ) {
-  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
+  return 0; //((this.inte - 20) * 2) + ((this.wis - 20) * 2)
 }
