@@ -198,6 +198,11 @@ function calculate(values) {
     alert(myChar.toString());
     break;
   case 'rune':
+    myChar = new Rune(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   case 'priest':
     myChar = new Priest(values['level']);
