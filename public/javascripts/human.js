@@ -625,7 +625,16 @@ Archer.prototype.calculateAndSetMinStr = function( ) {
   if(this.lvl < 10) {
     this.minStr = 20;
   } else {
-    this.minStr = this.lvl - 1 + 20;
+    var i = 1;
+    this.minStr = 20;
+    for(i = 1; i < this.lvl; i++) {
+      if(i % 2 == 0) {
+        this.minStr = this.minStr + 2;
+      }
+      if(i % 2 == 1) {
+        this.minStr = this.minStr + 1;
+      }
+    }
   }
 }
 
@@ -633,7 +642,16 @@ Archer.prototype.calculateAndSetMinDex = function( ) {
   if(this.lvl < 10) {
     this.minDex = this.lvl - 1 + 20;
   } else {
-    this.minDex = (((this.lvl - 1) * 2) + 20);
+    var i = 1;
+    this.minDex = 20;
+    for(i = 1; i < this.lvl; i++) {
+      if(i % 2 == 0) {
+        this.minDex = this.minDex + 1;
+      } 
+      if(i % 2 == 1) {
+        this.minDex = this.minDex + 2;
+      }
+    }
   }
 }
 

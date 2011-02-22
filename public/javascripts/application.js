@@ -173,6 +173,11 @@ function calculate(values) {
     alert(myChar.toString());
     break;
   case 'archer':
+    myChar = new Archer(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   case 'gunner':
     break;
