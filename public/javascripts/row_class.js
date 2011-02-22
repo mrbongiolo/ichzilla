@@ -169,6 +169,16 @@ RowClass.prototype.calculateMagicPower = function( ) {
   return 0;
 }
 
+//---- Calculate MAGIC RESISTANCE ----//
+//
+//Formula:
+//
+//  Fighter classes:
+//  mr = ((INT - 20) * 0.75) + ((WIS - 20) * 0.75)
+//
+//create function to calculate it
+
+
 RowClass.prototype.toString = function( ) {
   return "Class Name: Row Class, Level: " + this.lvl + 
     ", Bonus Points: " + this.bonusPoints +
