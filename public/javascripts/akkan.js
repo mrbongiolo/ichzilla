@@ -574,93 +574,93 @@ Assassin.prototype.calculateMagicPower = function( ) {
 }
 
 //
-//---- ARCHER CLASS ----//
+//---- GUNNER CLASS ----//
 //
 //
-//Initilaze Archer and inherit from RowClass
-function Archer(lvl) {
+//Initilaze Gunner and inherit from RowClass
+function Gunner(lvl) {
   RowClass.call(this, lvl);
 }
 
-Archer.prototype = new RowClass( );
+Gunner.prototype = new RowClass( );
 
-delete Archer.prototype.lvl;
-delete Archer.prototype.str;
-delete Archer.prototype.con;
-delete Archer.prototype.dex
-delete Archer.prototype.inte;
-delete Archer.prototype.wis;
-delete Archer.prototype.minStr;
-delete Archer.prototype.minCon;
-delete Archer.prototype.minDex
-delete Archer.prototype.minInte;
-delete Archer.prototype.minWis;
-delete Archer.prototype.maxStr;
-delete Archer.prototype.maxCon;
-delete Archer.prototype.maxDex
-delete Archer.prototype.maxInte;
-delete Archer.prototype.maxWis;
-delete Archer.prototype.bonusPoints;
+delete Gunner.prototype.lvl;
+delete Gunner.prototype.str;
+delete Gunner.prototype.con;
+delete Gunner.prototype.dex
+delete Gunner.prototype.inte;
+delete Gunner.prototype.wis;
+delete Gunner.prototype.minStr;
+delete Gunner.prototype.minCon;
+delete Gunner.prototype.minDex
+delete Gunner.prototype.minInte;
+delete Gunner.prototype.minWis;
+delete Gunner.prototype.maxStr;
+delete Gunner.prototype.maxCon;
+delete Gunner.prototype.maxDex
+delete Gunner.prototype.maxInte;
+delete Gunner.prototype.maxWis;
+delete Gunner.prototype.bonusPoints;
 
-Archer.prototype.constructor = RowClass;
+Gunner.prototype.constructor = RowClass;
 
 //Override methods used for this class
-Archer.prototype.usedBPStr = function( ) {
+Gunner.prototype.usedBPStr = function( ) {
   return (this.str - this.minStr) * 2;
 }
 
-Archer.prototype.usedBPDex = function( ) {
+Gunner.prototype.usedBPDex = function( ) {
   return (this.dex - this.minDex) * 2; 
 }
 
-Archer.prototype.calculateAndSetMaxStr = function( ) {
+Gunner.prototype.calculateAndSetMaxStr = function( ) {
   this.maxStr = this.str + (this.bonusPoints / 2);
 }
 
-Archer.prototype.calculateAndSetMaxDex = function( ) {
+Gunner.prototype.calculateAndSetMaxDex = function( ) {
   this.maxDex = this.dex + (this.bonusPoints / 2);
 }
 
-Archer.prototype.calculateAndSetMinStr = function( ) {
+Gunner.prototype.calculateAndSetMinStr = function( ) {
   if(this.lvl < 10) {
-    this.minStr = 20;
+    this.minStr = this.lvl -1 + 20
   } else {
     var i = 1;
     this.minStr = 20;
     for(i = 1; i < this.lvl; i++) {
       if(i % 2 == 0) {
-        this.minStr = this.minStr + 2;
+        this.minStr = this.minStr + 1;
       }
       if(i % 2 == 1) {
-        this.minStr = this.minStr + 1;
+        this.minStr = this.minStr + 2;
       }
     }
   }
 }
 
-Archer.prototype.calculateAndSetMinDex = function( ) {
+Gunner.prototype.calculateAndSetMinDex = function( ) {
   if(this.lvl < 10) {
-    this.minDex = this.lvl - 1 + 20;
+    this.minDex = 20;
   } else {
     var i = 1;
     this.minDex = 20;
     for(i = 1; i < this.lvl; i++) {
       if(i % 2 == 0) {
-        this.minDex = this.minDex + 1;
+        this.minDex = this.minDex + 2;
       } 
       if(i % 2 == 1) {
-        this.minDex = this.minDex + 2;
+        this.minDex = this.minDex + 1;
       }
     }
   }
 }
 
-Archer.prototype.calculateHP = function( ) {
+Gunner.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
 //Still need to find out how the rogue class calculate Magic Power
-Archer.prototype.calculateMagicPower = function( ) {
+Gunner.prototype.calculateMagicPower = function( ) {
   return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
 }
