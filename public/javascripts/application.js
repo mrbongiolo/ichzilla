@@ -197,6 +197,11 @@ function calculate(values) {
     alert(myChar.toString());
     break;
   case 'shadow':
+    myChar = new Shadow(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   case 'sorcerer':
     myChar = new Sorcerer(values['level']);

@@ -8,97 +8,6 @@
 //
 
 //
-//---- ENCHANTER ----//
-//
-
-//Initilaze Enchanter and inherit from RowClass
-function Enchanter(lvl) {
-  RowClass.call(this, lvl);
-}
-
-Enchanter.prototype = new RowClass( );
-
-delete Enchanter.prototype.lvl;
-delete Enchanter.prototype.str;
-delete Enchanter.prototype.con;
-delete Enchanter.prototype.dex
-delete Enchanter.prototype.inte;
-delete Enchanter.prototype.wis;
-delete Enchanter.prototype.minStr;
-delete Enchanter.prototype.minCon;
-delete Enchanter.prototype.minDex
-delete Enchanter.prototype.minInte;
-delete Enchanter.prototype.minWis;
-delete Enchanter.prototype.maxStr;
-delete Enchanter.prototype.maxCon;
-delete Enchanter.prototype.maxDex
-delete Enchanter.prototype.maxInte;
-delete Enchanter.prototype.maxWis;
-delete Enchanter.prototype.bonusPoints;
-
-Enchanter.prototype.constructor = RowClass;
-
-//Override methods used in Enchanter class
-Enchanter.prototype.usedBPDex = function( ) {
-  return (this.dex - this.minDex) * 2; 
-}
-
-Enchanter.prototype.usedBPInte = function( ) {
-  return (this.inte - this.minInte) * 2;
-}
-
-Enchanter.prototype.calculateAndSetMaxDex = function( ) {
-  this.maxDex = this.dex + (this.bonusPoints / 2);
-}
-
-Enchanter.prototype.calculateAndSetMaxInte = function( ) {
-  this.maxInte = this.inte + (this.bonusPoints / 2);
-}
-
-Enchanter.prototype.calculateAndSetMinDex = function( ) {
-  if(this.lvl < 10) {
-    this.minDex = this.lvl - 1 + 20;
-  } else {
-    var i = 1;
-    this.minDex = 20;
-    for(i = 1; i < this.lvl; i++) {
-      if(i % 2 == 0) {
-        this.minDex = this.minDex + 1;
-      } 
-      if(i % 2 == 1) {
-        this.minDex = this.minDex + 2;
-      }
-    }
-  }
-}
-
-Enchanter.prototype.calculateAndSetMinInte = function( ) {
-  if(this.lvl < 10) {
-    this.minInte = 20;
-  } else {
-    var i = 1;
-    this.minInte = 20;
-    for(i = 1; i < this.lvl; i++) {
-      if(i % 2 == 0) {
-        this.minInte = this.minInte + 2;
-      }
-      if(i % 2 == 1) {
-        this.minInte = this.minInte + 1;
-      }
-    }
-  }
-}
-
-Enchanter.prototype.calculateHP = function( ) {
-  var baseHP = RowClass.prototype.calculateHP.apply(this);
-  return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
-}
-
-Enchanter.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
-}
-
-//
 //---- RUNE CLASS ----//
 //
 //
@@ -245,94 +154,77 @@ Life.prototype.calculateMagicPower = function( ) {
 }
 
 //
-//---- PRIEST CLASS ----//
+//---- SHADOW CLASS ----//
 //
 //
-//Initilaze Priest and inherit from RowClass
-function Priest(lvl) {
+//Initilaze Shadow and inherit from RowClass
+function Shadow(lvl) {
   RowClass.call(this, lvl);
 }
 
-Priest.prototype = new RowClass( );
+Shadow.prototype = new RowClass( );
 
-delete Priest.prototype.lvl;
-delete Priest.prototype.str;
-delete Priest.prototype.con;
-delete Priest.prototype.dex
-delete Priest.prototype.inte;
-delete Priest.prototype.wis;
-delete Priest.prototype.minStr;
-delete Priest.prototype.minCon;
-delete Priest.prototype.minDex
-delete Priest.prototype.minInte;
-delete Priest.prototype.minWis;
-delete Priest.prototype.maxStr;
-delete Priest.prototype.maxCon;
-delete Priest.prototype.maxDex
-delete Priest.prototype.maxInte;
-delete Priest.prototype.maxWis;
-delete Priest.prototype.bonusPoints;
+delete Shadow.prototype.lvl;
+delete Shadow.prototype.str;
+delete Shadow.prototype.con;
+delete Shadow.prototype.dex
+delete Shadow.prototype.inte;
+delete Shadow.prototype.wis;
+delete Shadow.prototype.minStr;
+delete Shadow.prototype.minCon;
+delete Shadow.prototype.minDex
+delete Shadow.prototype.minInte;
+delete Shadow.prototype.minWis;
+delete Shadow.prototype.maxStr;
+delete Shadow.prototype.maxCon;
+delete Shadow.prototype.maxDex
+delete Shadow.prototype.maxInte;
+delete Shadow.prototype.maxWis;
+delete Shadow.prototype.bonusPoints;
 
-Priest.prototype.constructor = RowClass;
+Shadow.prototype.constructor = RowClass;
 
 //Override methods used for this class
-Priest.prototype.usedBPCon = function( ) {
-  return (this.con - this.minCon) * 2; 
+Shadow.prototype.usedBPStr = function( ) {
+  return (this.str - this.minStr) * 2;
 }
 
-Priest.prototype.usedBPWis = function( ) {
-  return (this.wis - this.minWis) * 2;
+Shadow.prototype.usedBPDex = function( ) {
+  return (this.dex - this.minDex) * 2; 
 }
 
-Priest.prototype.calculateAndSetMaxCon = function( ) {
-  this.maxCon = this.con + (this.bonusPoints / 2);
+Shadow.prototype.calculateAndSetMaxStr = function( ) {
+  this.maxStr = this.str + (this.bonusPoints / 2);
 }
 
-Priest.prototype.calculateAndSetMaxWis = function( ) {
-  this.maxWis = this.wis + (this.bonusPoints / 2);
+Shadow.prototype.calculateAndSetMaxDex = function( ) {
+  this.maxDex = this.dex + (this.bonusPoints / 2);
 }
 
-Priest.prototype.calculateAndSetMinCon = function( ) {
+Shadow.prototype.calculateAndSetMinStr = function( ) {
   if(this.lvl < 10) {
-    this.minCon = this.lvl - 1 + 20;
+    this.minStr = 20;
   } else {
-    var i = 1;
-    this.minCon = 20;
-    for(i = 1; i < this.lvl; i++) {
-      if(i % 2 == 0) {
-        this.minCon = this.minCon + 1;
-      } 
-      if(i % 2 == 1) {
-        this.minCon = this.minCon + 2;
-      }
-    }
+    this.minStr = this.lvl - 1 + 20;
   }
 }
 
-Priest.prototype.calculateAndSetMinWis = function( ) {
+Shadow.prototype.calculateAndSetMinDex = function( ) {
   if(this.lvl < 10) {
-    this.minWis = 20;
+    this.minDex = this.lvl - 1 + 20;
   } else {
-    var i = 1;
-    this.minWis = 20;
-    for(i = 1; i < this.lvl; i++) {
-      if(i % 2 == 0) {
-        this.minWis = this.minWis + 2;
-      }
-      if(i % 2 == 1) {
-        this.minWis = this.minWis + 1;
-      }
-    }
+    this.minDex = (((this.lvl - 1) * 2) + 20);
   }
 }
 
-Priest.prototype.calculateHP = function( ) {
+Shadow.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
-  return baseHP + Math.floor((this.con -20) * 0.2 * this.lvl);
+  return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
-Priest.prototype.calculateMagicPower = function( ) {
-  return ((this.int - 20) * 1) + ((this.wis - 20) * 1.5)
+//Still need to find out how the rogue class calculate Magic Power
+Shadow.prototype.calculateMagicPower = function( ) {
+  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
@@ -497,80 +389,6 @@ Attacker.prototype.calculateHP = function( ) {
 
 Attacker.prototype.calculateMagicPower = function( ) {
   return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
-}
-
-//
-//---- ASSASSIN CLASS ----//
-//
-//
-//Initilaze Assassin and inherit from RowClass
-function Assassin(lvl) {
-  RowClass.call(this, lvl);
-}
-
-Assassin.prototype = new RowClass( );
-
-delete Assassin.prototype.lvl;
-delete Assassin.prototype.str;
-delete Assassin.prototype.con;
-delete Assassin.prototype.dex
-delete Assassin.prototype.inte;
-delete Assassin.prototype.wis;
-delete Assassin.prototype.minStr;
-delete Assassin.prototype.minCon;
-delete Assassin.prototype.minDex
-delete Assassin.prototype.minInte;
-delete Assassin.prototype.minWis;
-delete Assassin.prototype.maxStr;
-delete Assassin.prototype.maxCon;
-delete Assassin.prototype.maxDex
-delete Assassin.prototype.maxInte;
-delete Assassin.prototype.maxWis;
-delete Assassin.prototype.bonusPoints;
-
-Assassin.prototype.constructor = RowClass;
-
-//Override methods used for this class
-Assassin.prototype.usedBPStr = function( ) {
-  return (this.str - this.minStr) * 2;
-}
-
-Assassin.prototype.usedBPDex = function( ) {
-  return (this.dex - this.minDex) * 2; 
-}
-
-Assassin.prototype.calculateAndSetMaxStr = function( ) {
-  this.maxStr = this.str + (this.bonusPoints / 2);
-}
-
-Assassin.prototype.calculateAndSetMaxDex = function( ) {
-  this.maxDex = this.dex + (this.bonusPoints / 2);
-}
-
-Assassin.prototype.calculateAndSetMinStr = function( ) {
-  if(this.lvl < 10) {
-    this.minStr = 20;
-  } else {
-    this.minStr = this.lvl - 1 + 20;
-  }
-}
-
-Assassin.prototype.calculateAndSetMinDex = function( ) {
-  if(this.lvl < 10) {
-    this.minDex = this.lvl - 1 + 20;
-  } else {
-    this.minDex = (((this.lvl - 1) * 2) + 20);
-  }
-}
-
-Assassin.prototype.calculateHP = function( ) {
-  var baseHP = RowClass.prototype.calculateHP.apply(this);
-  return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
-}
-
-//Still need to find out how the rogue class calculate Magic Power
-Assassin.prototype.calculateMagicPower = function( ) {
-  return 0; //((this.int - 20) * 2) + ((this.wis - 20) * 2)
 }
 
 //
