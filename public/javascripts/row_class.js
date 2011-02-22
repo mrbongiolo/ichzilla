@@ -139,6 +139,25 @@ RowClass.prototype.calculateHP = function( ) {
                    ((this.dex - 20) * 0.05 * this.lvl));
 }
 
+////---- Calculate MAGIC POWER ----//
+//
+//Formula:
+//  
+//  Caster classes:
+//  magic = ((INT - 20) * 3.1) + ((WIS - 20) * 2)
+//
+//  Fighter classes:
+//  magic = ((INT - 20) * 2) + ((WIS - 20) * 2)
+//
+//  Acolity classes:
+//  magic = ((INT - 20) * 1) + ((WIS - 20) * 1.5)
+//
+//source: http://forum.ruinsofwar.com/viewtopic.php?f=27&t=6719
+//
+RowClass.prototype.calculateMagicPower = function( ) {
+  return 0;
+}
+
 RowClass.prototype.toString = function( ) {
   return "Class Name: Row Class, Level: " + this.lvl + 
     ", Bonus Points: " + this.bonusPoints +

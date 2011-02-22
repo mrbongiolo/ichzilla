@@ -90,10 +90,12 @@ Enchanter.prototype.calculateAndSetMinInte = function( ) {
 }
 
 Enchanter.prototype.calculateHP = function( ) {
-  //call the overridded method from RowClass
   var baseHP = RowClass.prototype.calculateHP.apply(this);
-  //calculate class HP and return the value
   return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
+}
+
+Enchanter.prototype.calculateMagicPower = function( ) {
+  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
 }
 
 //
@@ -126,7 +128,14 @@ delete Sorcerer.prototype.maxWis;
 delete Sorcerer.prototype.bonusPoints;
 
 Sorcerer.prototype.constructor = RowClass;
+Enchanter.prototype.calculateHP = function( ) {
+  var baseHP = RowClass.prototype.calculateHP.apply(this);
+  return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
+}
 
+Enchanter.prototype.calculateMagicPower = function( ) {
+  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
+}
 //Override methods used in Enchanter class
 Sorcerer.prototype.usedBPDex = function( ) {
   return (this.dex - this.minDex) * 2; 
@@ -158,4 +167,13 @@ Sorcerer.prototype.calculateAndSetMinInte = function( ) {
   } else {
     this.minInte = (((this.lvl - 1) * 2) + 20);
   }
+}
+
+Sorcerer.prototype.calculateHP = function( ) {
+  var baseHP = RowClass.prototype.calculateHP.apply(this);
+  return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
+}
+
+Sorcerer.prototype.calculateMagicPower = function( ) {
+  return ((this.int - 20) * 3.1) + ((this.wis - 20) * 2)
 }
