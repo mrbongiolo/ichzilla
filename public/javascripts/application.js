@@ -169,6 +169,11 @@ function calculate(values) {
     alert(myChar.toString());
     break;
   case 'templar':
+    myChar = new Templar(values['level']);
+    myChar.calculateStats( );
+    $('#bonus_points').text(myChar.bonusPoints);
+    setMinMaxStatValues();
+    alert(myChar.toString());
     break;
   case 'assassin':
     myChar = new Assassin(values['level']);

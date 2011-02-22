@@ -336,54 +336,54 @@ Priest.prototype.calculateMagicPower = function( ) {
 }
 
 //
-//---- DEFENDER CLASS ----//
+//---- TEMPLAR CLASS ----//
 //
 //
-//Initilaze Defender and inherit from RowClass
-function Defender(lvl) {
+//Initilaze Templar and inherit from RowClass
+function Templar(lvl) {
   RowClass.call(this, lvl);
 }
 
-Defender.prototype = new RowClass( );
+Templar.prototype = new RowClass( );
 
-delete Defender.prototype.lvl;
-delete Defender.prototype.str;
-delete Defender.prototype.con;
-delete Defender.prototype.dex
-delete Defender.prototype.inte;
-delete Defender.prototype.wis;
-delete Defender.prototype.minStr;
-delete Defender.prototype.minCon;
-delete Defender.prototype.minDex
-delete Defender.prototype.minInte;
-delete Defender.prototype.minWis;
-delete Defender.prototype.maxStr;
-delete Defender.prototype.maxCon;
-delete Defender.prototype.maxDex
-delete Defender.prototype.maxInte;
-delete Defender.prototype.maxWis;
-delete Defender.prototype.bonusPoints;
+delete Templar.prototype.lvl;
+delete Templar.prototype.str;
+delete Templar.prototype.con;
+delete Templar.prototype.dex
+delete Templar.prototype.inte;
+delete Templar.prototype.wis;
+delete Templar.prototype.minStr;
+delete Templar.prototype.minCon;
+delete Templar.prototype.minDex
+delete Templar.prototype.minInte;
+delete Templar.prototype.minWis;
+delete Templar.prototype.maxStr;
+delete Templar.prototype.maxCon;
+delete Templar.prototype.maxDex
+delete Templar.prototype.maxInte;
+delete Templar.prototype.maxWis;
+delete Templar.prototype.bonusPoints;
 
-Defender.prototype.constructor = RowClass;
+Templar.prototype.constructor = RowClass;
 
 //Override methods used for this class
-Defender.prototype.usedBPStr = function( ) {
+Templar.prototype.usedBPStr = function( ) {
   return (this.str - this.minStr) * 2;
 }
 
-Defender.prototype.usedBPCon = function( ) {
+Templar.prototype.usedBPCon = function( ) {
   return (this.con - this.minCon) * 2; 
 }
 
-Defender.prototype.calculateAndSetMaxStr = function( ) {
+Templar.prototype.calculateAndSetMaxStr = function( ) {
   this.maxStr = this.str + (this.bonusPoints / 2);
 }
 
-Defender.prototype.calculateAndSetMaxCon = function( ) {
+Templar.prototype.calculateAndSetMaxCon = function( ) {
   this.maxCon = this.con + (this.bonusPoints / 2);
 }
 
-Defender.prototype.calculateAndSetMinStr = function( ) {
+Templar.prototype.calculateAndSetMinStr = function( ) {
   if(this.lvl < 10) {
     this.minStr = 20;
   } else {
@@ -400,7 +400,7 @@ Defender.prototype.calculateAndSetMinStr = function( ) {
   }
 }
 
-Defender.prototype.calculateAndSetMinCon = function( ) {
+Templar.prototype.calculateAndSetMinCon = function( ) {
   if(this.lvl < 10) {
     this.minCon = this.lvl - 1 + 20;
   } else {
@@ -417,12 +417,12 @@ Defender.prototype.calculateAndSetMinCon = function( ) {
   }
 }
 
-Defender.prototype.calculateHP = function( ) {
+Templar.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.con -20) * 0.4 * this.lvl);
 }
 
-Defender.prototype.calculateMagicPower = function( ) {
+Templar.prototype.calculateMagicPower = function( ) {
   return ((this.int - 20) * 2) + ((this.wis - 20) * 2)
 }
 
