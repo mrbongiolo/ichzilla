@@ -1,6 +1,6 @@
 <form>
   Your class: <%= select_tag(:row_class, @classes) %><br />
-  Your level: <input id="level" type="text" name="level" size="5" value="1"><br />
+  Your level: <input id="level" type="text" name="level" size="2.5" value="1"><br />
   <br />
   Bonus Points: <span id="bonus_points">0</span><br />
   <br />
@@ -11,7 +11,7 @@
   WIS: <%= select_tag(:wis, [], :class => "stat_selector") %><br />
 </form>
 <br />
-Skill Points: <span id="status_skill_points">0</span>
-<br/>
 HP: <span id="status_hp">0</span><br/>
-Magic Power: <span id="status_magic_power">0</span>
+Magic Power: <span id="status_magic_power">0</span><br />
+<br />
+Skill Points: <span id="status_skill_points">0</span>
