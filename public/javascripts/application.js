@@ -10,6 +10,10 @@ function showMagicPower( ) {
   $('#status_magic_power').text(myChar.calculateMagicPower());
 }
 
+function showSkillPoints( ) {
+  $('#status_skill_points').text(myChar.calculateSkillPoints());
+}
+
 function calculate(values) {
   switch(values['row_class']) {
   case 'warrior':
@@ -149,8 +153,9 @@ $(document).ready(function( ) {
     calculate(values)
     showHP();
     showMagicPower();
+    showSkillPoints();
   });
-  $("#level").change( function( ) {
+  $('#level').change( function( ) {
     var values = {};
     $.each($('form').serializeArray(), function(i, field) {
       values[field.name] = field.value;
@@ -158,6 +163,7 @@ $(document).ready(function( ) {
     calculate(values);
     showHP();
     showMagicPower();
+    showSkillPoints();
   });
   $('.stat_selector').change( function( ) {
     var values = {};
@@ -178,5 +184,10 @@ $(document).ready(function( ) {
     
     showHP();
     showMagicPower();
+    showSkillPoints();
+  });
+  $('form').submit(function(e) {
+    e.preventDefault();
+    return false;
   });
 });

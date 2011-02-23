@@ -69,6 +69,11 @@ RowClass.prototype.usedBPWis = function( ) {
   return this.wis - this.minWis;
 }
 
+//Calculate Skill Points
+RowClass.prototype.calculateSkillPoints = function( ) {
+  return Number(this.lvl) + Math.floor((this.inte - 20) / 10);
+}
+
 //
 //---- Calculate and Set MAX Stat Value ----//
 //
