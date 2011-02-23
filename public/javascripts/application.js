@@ -165,7 +165,7 @@ $(document).ready(function( ) {
     showMagicPower();
     showSkillPoints();
   });
-  $('.stat_selector').change( function( ) {
+  $('.stat_selector').blur( function( ) {
     var values = {};
     $.each($('form').serializeArray(), function(i, field) {
       values[field.name] = field.value;
@@ -187,7 +187,6 @@ $(document).ready(function( ) {
     showSkillPoints();
   });
   $('form').submit(function(e) {
-    e.preventDefault();
     return false;
   });
 });
