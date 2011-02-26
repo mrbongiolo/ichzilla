@@ -12,6 +12,7 @@ helpers do
     options_for_select = ""
     options_for_select += " class=\"#{options[:class]}\"" if options[:class]
     options_for_select += " size=\"#{options[:size]}\"" if options[:size]
+    options_for_select += " autofocus" if options[:auto_focus]
     result = "<select id=\"#{name.to_s.downcase}\" name=\"#{name.to_s}\" #{options_for_select} >\n"
     collection.each do |c|
       result += "<option value=\"#{c.to_s.downcase}\">#{c.to_s.capitalize}</option>\n"
