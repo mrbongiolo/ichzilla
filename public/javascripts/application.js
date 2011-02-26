@@ -156,6 +156,7 @@ $(document).ready(function( ) {
     showSkillPoints();
   });
   $('#level').change( function( ) {
+    if (isNaN($('#level').val())) { return; } //Stop the script if the value isn't a number.
     var values = {};
     $.each($('form').serializeArray(), function(i, field) {
       values[field.name] = field.value;
