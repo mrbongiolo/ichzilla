@@ -1,5 +1,5 @@
 <form>
-  Class: <%= select_tag(:row_class, @classes) %><br />
+  Class: <%= select_tag(:row_class, @classes, :auto_focus => true) %><br />
   Level: <input id="level" type="text" name="level" size="2.5" value="1"><br />
   <br />
   Bonus Points: <span id="bonus_points" class="result">0</span><br />
