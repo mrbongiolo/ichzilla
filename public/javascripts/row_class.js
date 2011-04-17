@@ -163,10 +163,10 @@ RowClass.prototype.calculateHP = function( ) {
 //  magic = ((INT - 20) * 2) + ((WIS - 20) * 2)
 //
 //  Acolity classes:
-//  magic = ((INT - 20) * 1) + ((WIS - 20) * 1.5)
+//  magic = ((INT - 20) * 2) + ((WIS - 20) * 3)
 //
 //  Rogue classes:
-//  STILL NEED TO FIND OUT
+//  magic = ((INT - 20) *2) + ((WIS - 20) * 2)
 //
 //source: http://forum.ruinsofwar.com/viewtopic.php?f=27&t=6719
 //
