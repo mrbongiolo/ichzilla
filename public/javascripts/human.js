@@ -241,7 +241,7 @@ Cleric.prototype.calculateHP = function( ) {
 }
 
 Cleric.prototype.calculateMagicPower = function( ) {
-  return Math.floor(((this.inte - 20) * 1) + ((this.wis - 20) * 1.5));
+  return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) *3));
 }
 
 //
@@ -332,7 +332,7 @@ Priest.prototype.calculateHP = function( ) {
 }
 
 Priest.prototype.calculateMagicPower = function( ) {
-  return Math.floor(((this.inte - 20) * 1) + ((this.wis - 20) * 1.5));
+  return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 3));
 }
 
 //
@@ -568,9 +568,9 @@ Assassin.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
-//Still need to find out how the rogue class calculate Magic Power
+//Shadow, Archer, Assassin and Gunner all follow the same formula as Fighter classes
 Assassin.prototype.calculateMagicPower = function( ) {
-  return 0; //Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
+Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
 
 //
@@ -660,7 +660,7 @@ Archer.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
-//Still need to find out how the rogue class calculate Magic Power
+//Shadow, Archer, Assassin and Gunner all follow the same formula as Fighter classes
 Archer.prototype.calculateMagicPower = function( ) {
-  return 0; //Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
+  Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
