@@ -146,9 +146,9 @@ RowClass.prototype.calculateStats = function( ) {
 //
 //source: http://forum.ruinsofwar.com/viewtopic.php?f=27&t=6719
 //
-//this is the Base HP calculation. This formula should suffice, since java has */. operater precedence over +- 
+//this is the Base HP calculation. 
 RowClass.prototype.calculateHP = function( ) {
-  return Math.floor(150 + 25 * this.lvl + ((this.con-20) * 0.15 * this.lvl) + ((this.dex-20) * 0.05 * this.lvl));
+  return Math.floor(150 + (25 * this.lvl) + ((this.con-20) * 0.15 * this.lvl) + ((this.dex-20) * 0.05 * this.lvl));
 }
 
 ////---- Calculate MAGIC POWER ----//
