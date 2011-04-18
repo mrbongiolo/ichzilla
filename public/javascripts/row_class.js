@@ -223,6 +223,7 @@ RowClass.prototype.calculateMagicPower = function( ) {
 //The output from this formula is Criticalchance in %. (The value that shows when you mouseOver "Critical-value" in-game.)
 //
 //Sources for all these formulas is an msn-conversation with ADM-Black
+//
 
 
 RowClass.prototype.toString = function( ) {
