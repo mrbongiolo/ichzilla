@@ -181,7 +181,9 @@ RowClass.prototype.calculateMagicPower = function( ) {
 //  mr = ((INT - 20) * 0.75) + ((WIS - 20) * 0.75)
 //
 //create function to calculate it
-
+/*RowClass.prototype.calculateMagicResistance = function( ) {
+    return 0;
+  }*/
 //---- Calculate MAGIC DAMAGE REDUCTION ----//
 //
 //Formula:
