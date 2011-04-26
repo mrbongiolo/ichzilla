@@ -1,6 +1,7 @@
 //
 //---- AK'KAN CLASSES ----//
 //
+//
 //This file contain all the classes
 //for the ak'kan race.
 //The base calculations are inherited
@@ -149,6 +150,10 @@ Life.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.dex - 20) * 0.2 * this.lvl);
 }
 
+Life.prototype.calculateDefense = function( ) {
+  return Math.floor(( this.con * 0 ) + ( (this.dex - 20) * 0.3 ));
+}
+
 Life.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 3));
 }
@@ -222,9 +227,8 @@ Shadow.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
-//Shadow, Archer, Assassin and Gunner all follow the same formula as Fighter classes
 Shadow.prototype.calculateMagicPower = function( ) {
- Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
+  return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
 
 //
@@ -314,6 +318,10 @@ Templar.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.con -20) * 0.4 * this.lvl);
 }
 
+Templar.prototype.calculateDefense = function( ) {
+  return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
+}
+
 Templar.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
@@ -385,6 +393,10 @@ Attacker.prototype.calculateAndSetMinCon = function( ) {
 Attacker.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.con -20) * 0.35 * this.lvl);
+}
+
+Attacker.prototype.calculateDefense = function( ) {
+  return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
 }
 
 Attacker.prototype.calculateMagicPower = function( ) {
@@ -478,7 +490,6 @@ Gunner.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
-//Shadow, Archer, Assassin and Gunner all follow the same formula as Fighter classes
 Gunner.prototype.calculateMagicPower = function( ) {
-Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
+  return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }

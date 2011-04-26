@@ -151,6 +151,33 @@ RowClass.prototype.calculateHP = function( ) {
   return Math.floor(150 + (25 * this.lvl) + ((this.con-20) * 0.15 * this.lvl) + ((this.dex-20) * 0.05 * this.lvl));
 }
 
+////---- Calculate DEFENSE ----//
+//
+//Formula:
+//  
+//  Armor Class Bonus: Defender/Warrior/Priest/Cleric/Templar/Attacker: 0.3 (con)
+//  Armor Class Bonus: Life: 0.3 (dex)
+//  Armor Class Bonus: All other classes: 0
+//  Armor: CON * IronSkinValue + (MAIN CLASS STAT - 20) * Armor Class Bonus
+//
+//source: ADM-Brown
+//
+RowClass.prototype.calculateDefense = function( ) {
+  return 0;
+}
+
+////---- Calculate DEFENSE PERCENTAGE ----//
+//
+//Formula:
+//  
+//  Defense %: ( ( 99 * Armor / 4 ) / ( armor / 4 + 50 ) * 100 ) / 100
+//
+//source: ADM-Brown
+//
+RowClass.prototype.calculateDefensePercentage = function( ) {
+  return (((99 * this.calculateDefense() / 4) / (this.calculateDefense() / 4 + 50) * 100) / 100).toFixed(2);
+}
+
 ////---- Calculate MAGIC POWER ----//
 //
 //Formula:

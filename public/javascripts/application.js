@@ -14,6 +14,10 @@ function showSkillPoints( ) {
   $('#status_skill_points').text(myChar.calculateSkillPoints());
 }
 
+function showDefense( ) {
+  $('#status_defense').text(myChar.calculateDefense() + ' (' + myChar.calculateDefensePercentage() + '%)');
+}
+
 function calculate(values) {
   switch(values['row_class']) {
   case 'warrior':
@@ -152,6 +156,7 @@ $(document).ready(function( ) {
     });
     calculate(values)
     showHP();
+    showDefense();
     showMagicPower();
     showSkillPoints();
   });
@@ -163,6 +168,7 @@ $(document).ready(function( ) {
     });
     calculate(values);
     showHP();
+    showDefense();
     showMagicPower();
     showSkillPoints();
   });
@@ -184,6 +190,7 @@ $(document).ready(function( ) {
     setMinMaxStatValues( );
     
     showHP();
+    showDefense();
     showMagicPower();
     showSkillPoints();
   });

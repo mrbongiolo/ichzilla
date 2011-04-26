@@ -1,6 +1,7 @@
 //
 //---- HUMAN CLASSES ----//
 //
+//
 //This file contain all the classes
 //for the human race.
 //The base calculations are inherited
@@ -8,9 +9,9 @@
 //
 
 //
-//---- ENCHANTER ----//
+//---- ENCHANTER CLASS ----//
 //
-
+//
 //Initilaze Enchanter and inherit from RowClass
 function Enchanter(lvl) {
   RowClass.call(this, lvl);
@@ -240,6 +241,10 @@ Cleric.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.con -20) * 0.2 * this.lvl);
 }
 
+Cleric.prototype.calculateDefense = function( ) {
+  return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
+}
+
 Cleric.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) *3));
 }
@@ -329,6 +334,10 @@ Priest.prototype.calculateAndSetMinWis = function( ) {
 Priest.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.con -20) * 0.2 * this.lvl);
+}
+
+Priest.prototype.calculateDefense = function( ) {
+  return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
 }
 
 Priest.prototype.calculateMagicPower = function( ) {
@@ -422,6 +431,10 @@ Defender.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.con -20) * 0.4 * this.lvl);
 }
 
+Defender.prototype.calculateDefense = function( ) {
+  return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
+}
+
 Defender.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
@@ -493,6 +506,10 @@ Warrior.prototype.calculateAndSetMinCon = function( ) {
 Warrior.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.con -20) * 0.35 * this.lvl);
+}
+
+Warrior.prototype.calculateDefense = function( ) {
+  return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
 }
 
 Warrior.prototype.calculateMagicPower = function( ) {
@@ -568,9 +585,8 @@ Assassin.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
-//Shadow, Archer, Assassin and Gunner all follow the same formula as Fighter classes
 Assassin.prototype.calculateMagicPower = function( ) {
-Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
+  return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
 
 //
@@ -660,7 +676,6 @@ Archer.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
 }
 
-//Shadow, Archer, Assassin and Gunner all follow the same formula as Fighter classes
 Archer.prototype.calculateMagicPower = function( ) {
-  Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
+  return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
