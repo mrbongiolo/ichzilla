@@ -181,6 +181,51 @@ RowClass.prototype.calculateMagicPower = function( ) {
 //  mr = ((INT - 20) * 0.75) + ((WIS - 20) * 0.75)
 //
 //create function to calculate it
+/*RowClass.prototype.calculateMagicResistance = function( ) {
+    return 0;
+  }*/
+//---- Calculate MAGIC DAMAGE REDUCTION ----//
+//
+//Formula:
+//
+// mDmgRed = ((99 * mr * 0.85)) / (mr * 0.85 + 50)  -  2;
+//
+//create function to calculate it
+//
+//The output from this formula is reduction of Magical Damage in %. (The value that shows when you mouseOver the "mrvalue" in-game.)
+
+//---- Calculate DAMAGE REDUCTION ----//
+//
+//Formula:
+//
+// pDmgRed = (99 * def / 4) / (def / 4 + 50);
+//
+//create function to calculate it
+// 
+//The output from this formula is reduction of Physical Damage in %. (The value that shows next to the "defvalue" in-game.)
+
+//---- Calculate CRITICAL CHANCE REDUCTION ----//
+//
+//Formula:
+//
+// critRed = (50 * (evasion-300) / 4) / ((evasion-300) / 4 + 125);
+//
+//create function to calculate it
+// 
+//The output from this formula is reduction of critical in %. (The value that shows when you mouseOver "Evasionvalue" in-game.)
+
+//---- Calculate CRITICAL CHANCE ----//
+//
+//Formula:
+//
+// critChance = (99 * crit / 2) / (crit / 2 + 100);
+//
+//create function to calculate it
+// 
+//The output from this formula is Criticalchance in %. (The value that shows when you mouseOver "Critical-value" in-game.)
+//
+//Sources for all these formulas is an msn-conversation with ADM-Black
+//
 
 
 RowClass.prototype.toString = function( ) {
