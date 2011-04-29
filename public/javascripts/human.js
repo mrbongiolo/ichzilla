@@ -95,6 +95,10 @@ Enchanter.prototype.calculateHP = function( ) {
   return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
 }
 
+Enchanter.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 3.2);
+}
+
 Enchanter.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 3.1) + ((this.wis - 20) * 2));
 }
@@ -166,6 +170,10 @@ Sorcerer.prototype.calculateAndSetMinInte = function( ) {
 Sorcerer.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.dex -20) * 0.3 * this.lvl);
+}
+
+Sorcerer.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 3.2);
 }
 
 Sorcerer.prototype.calculateMagicPower = function( ) {
@@ -243,6 +251,10 @@ Cleric.prototype.calculateHP = function( ) {
 
 Cleric.prototype.calculateDefense = function( ) {
   return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
+}
+
+Cleric.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 3);
 }
 
 Cleric.prototype.calculateMagicPower = function( ) {
@@ -340,6 +352,10 @@ Priest.prototype.calculateDefense = function( ) {
   return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
 }
 
+Priest.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 3);
+}
+
 Priest.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 3));
 }
@@ -435,6 +451,10 @@ Defender.prototype.calculateDefense = function( ) {
   return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
 }
 
+Defender.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 0.3);
+}
+
 Defender.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
@@ -512,6 +532,10 @@ Warrior.prototype.calculateDefense = function( ) {
   return Math.floor(( this.con * 0 ) + ( (this.con - 20) * 0.3 ));
 }
 
+Warrior.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 0.3);
+}
+
 Warrior.prototype.calculateMagicPower = function( ) {
   return Math.floor(((this.inte - 20) * 2) + ((this.wis - 20) * 2));
 }
@@ -583,6 +607,10 @@ Assassin.prototype.calculateAndSetMinDex = function( ) {
 Assassin.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
+}
+
+Assassin.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 0.3);
 }
 
 Assassin.prototype.calculateMagicPower = function( ) {
@@ -674,6 +702,10 @@ Archer.prototype.calculateAndSetMinDex = function( ) {
 Archer.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.str -20) * 0.1 * this.lvl);
+}
+
+Archer.prototype.calculateMagicResistance = function( ) {
+  return (((this.inte - 20) + (this.wis - 20)) * 0.3);
 }
 
 Archer.prototype.calculateMagicPower = function( ) {

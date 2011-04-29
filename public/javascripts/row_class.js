@@ -188,7 +188,7 @@ RowClass.prototype.calculateDefensePercentage = function( ) {
 //  Fighter classes:
 //  magic = ((INT - 20) * 2) + ((WIS - 20) * 2)
 //
-//  Acolity classes:
+//  Acolyte classes:
 //  magic = ((INT - 20) * 2) + ((WIS - 20) * 3)
 //
 //  Rogue classes:
@@ -204,13 +204,22 @@ RowClass.prototype.calculateMagicPower = function( ) {
 //
 //Formula:
 //
-//  Fighter classes:
-//  mr = ((INT - 20) * 0.75) + ((WIS - 20) * 0.75)
+//  MagicRes Class Bonus: Defender/Warrior/Assassin/Archer/Templar/Attacker/Gunner/Shadow: 0.3
+//  MagicRes Class Bonus: Mage/Officiator: 2.4
+//  MagicRes Class Bonus: Acolyte/Priest/Cleric/Life: 3
+//  MagicRes Class Bonus: Sorcerer/Enchanter/Rune: 3.2
+//  MagicRes Class Bonus: All other classes: 0
+//  
+//  MagicRes = ((INT - 20) + (WIS - 20)) * MagicRes Class Bonus
 //
-//create function to calculate it
-/*RowClass.prototype.calculateMagicResistance = function( ) {
-    return 0;
-  }*/
+//  Magic Res %: ( ( INT + WIS * 0.8 ) + MAIN CLASS STAT * MagicRes Class Bonus ) + ( ( 99 * ( MagicRes * 0.85 ) ) / ( ( MagicRes * 0.85 ) + 50 ) * 100 ) / 100 - 2
+//
+//  Source: ADM-Brown
+//
+RowClass.prototype.calculateMagicResistance = function( ) {
+  return 0;
+}
+
 //---- Calculate MAGIC DAMAGE REDUCTION ----//
 //
 //Formula:
