@@ -144,11 +144,23 @@ RowClass.prototype.calculateStats = function( ) {
 //  
 //  HP = Base HP + Class HP
 //
+//  BASE HP = 250 + (50 * level) + ((CON-20) * 0.2 * Level) + ((DEX-20) * 0.05 * Level)
+//
 //source: http://forum.ruinsofwar.com/viewtopic.php?f=27&t=6719
+//source: http://forum.ruinsofwar.com/viewtopic.php?f=8&t=9820
+//
+//  The Longevity Ability will also modify the base HP
+//  it modify the "(50 * level)" part
+//    lvl 1 = (55 * level)
+//    lvl 2 = (60 * level)
+//    lvl 3 = (65 * level)
+//
+//  Note that right now Ichzilla doesn't take in consideration any
+//  kind of ability.
 //
 //this is the Base HP calculation. 
 RowClass.prototype.calculateHP = function( ) {
-  return Math.floor(150 + (25 * this.lvl) + ((this.con-20) * 0.15 * this.lvl) + ((this.dex-20) * 0.05 * this.lvl));
+  return Math.floor(250 + (50 * this.lvl) + ((this.con - 20) * 0.2 * this.lvl) + ((this.dex - 20) * 0.05 * this.lvl));
 }
 
 ////---- Calculate DEFENSE ----//
