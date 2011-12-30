@@ -381,10 +381,10 @@ Attacker.prototype.calculateAndSetMinCon = function( ) {
     this.minCon = this.lvl - 1 + 20;
   }
 }
-
+//Apparently Attackers have been changed from 0,35 -0,3 
 Attacker.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
-  return baseHP + Math.floor((this.con -20) * 0.35 * this.lvl);
+  return baseHP + Math.floor((this.con -20) * 0.3 * this.lvl);
 }
 
 Attacker.prototype.calculateMagicPower = function( ) {
