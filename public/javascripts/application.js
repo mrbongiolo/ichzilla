@@ -114,7 +114,7 @@ function setMinMaxStatValues( ) {
   $('#dex').html('');
   $('#int').html('');
   $('#wis').html('');
- 
+
   //STR
   var auxArr = [];
   for(i = myChar.minStr; i <= myChar.maxStr; i++) {
@@ -186,9 +186,9 @@ $(document).ready(function( ) {
     myChar.calculateAndSetBonusPoints();
     $('#bonus_points').text(myChar.bonusPoints);
     myChar.calculateStats( );
-    
+
     setMinMaxStatValues( );
-    
+
     showHP();
     showDefense();
     showMagicPower();

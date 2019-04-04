@@ -41,7 +41,7 @@ Rune.prototype.constructor = RowClass;
 
 //Override methods used for this class
 Rune.prototype.usedBPDex = function( ) {
-  return (this.dex - this.minDex) * 2; 
+  return (this.dex - this.minDex) * 2;
 }
 
 Rune.prototype.usedBPInte = function( ) {
@@ -114,7 +114,7 @@ Life.prototype.constructor = RowClass;
 
 //Override methods used for this class
 Life.prototype.usedBPDex = function( ) {
-  return (this.dex - this.minDex) * 2; 
+  return (this.dex - this.minDex) * 2;
 }
 
 Life.prototype.usedBPWis = function( ) {
@@ -195,7 +195,7 @@ Shadow.prototype.usedBPStr = function( ) {
 }
 
 Shadow.prototype.usedBPDex = function( ) {
-  return (this.dex - this.minDex) * 2; 
+  return (this.dex - this.minDex) * 2;
 }
 
 Shadow.prototype.calculateAndSetMaxStr = function( ) {
@@ -268,7 +268,7 @@ Templar.prototype.usedBPStr = function( ) {
 }
 
 Templar.prototype.usedBPCon = function( ) {
-  return (this.con - this.minCon) * 2; 
+  return (this.con - this.minCon) * 2;
 }
 
 Templar.prototype.calculateAndSetMaxStr = function( ) {
@@ -305,7 +305,7 @@ Templar.prototype.calculateAndSetMinCon = function( ) {
     for(i = 1; i < this.lvl; i++) {
       if(i % 2 == 0) {
         this.minCon = this.minCon + 1;
-      } 
+      }
       if(i % 2 == 1) {
         this.minCon = this.minCon + 2;
       }
@@ -363,7 +363,7 @@ Attacker.prototype.usedBPStr = function( ) {
 }
 
 Attacker.prototype.usedBPCon = function( ) {
-  return (this.con - this.minCon) * 2; 
+  return (this.con - this.minCon) * 2;
 }
 
 Attacker.prototype.calculateAndSetMaxStr = function( ) {
@@ -389,7 +389,7 @@ Attacker.prototype.calculateAndSetMinCon = function( ) {
     this.minCon = this.lvl - 1 + 20;
   }
 }
-//Apparently Attackers have been changed from 0,35 -0,3 
+//Apparently Attackers have been changed from 0,35 -0,3
 Attacker.prototype.calculateHP = function( ) {
   var baseHP = RowClass.prototype.calculateHP.apply(this);
   return baseHP + Math.floor((this.con -20) * 0.3 * this.lvl);
@@ -440,7 +440,7 @@ Gunner.prototype.usedBPStr = function( ) {
 }
 
 Gunner.prototype.usedBPDex = function( ) {
-  return (this.dex - this.minDex) * 2; 
+  return (this.dex - this.minDex) * 2;
 }
 
 Gunner.prototype.calculateAndSetMaxStr = function( ) {
@@ -477,7 +477,7 @@ Gunner.prototype.calculateAndSetMinDex = function( ) {
     for(i = 1; i < this.lvl; i++) {
       if(i % 2 == 0) {
         this.minDex = this.minDex + 2;
-      } 
+      }
       if(i % 2 == 1) {
         this.minDex = this.minDex + 1;
       }
