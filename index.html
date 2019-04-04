@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Ichzilla</title>
+    <link rel="stylesheet" href="public/stylesheets/screen.css" type="text/css" />
+    <script type="text/javascript" src="public/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="public/javascripts/row_class.js"></script>
+    <script type="text/javascript" src="public/javascripts/human.js"></script>
+    <script type="text/javascript" src="public/javascripts/akkan.js"></script>
+    <script type="text/javascript" src="public/javascripts/application.js"></script>
+  </head>
+
+  <body>
+    <header>
+    <hgroup>
+    <h1>Ichzilla</h1>
+    <h3>A ROW:EU Character Builder</h3>
+    </hgroup>
+    </header>
+
+    <article>
+      <form>
+        Class:
+        <select name="row_class" id="row_class" autofocus>
+          <option value="warrior">Warrior</option>
+          <option value="defender">Defender</option>
+          <option value="priest">Priest</option>
+          <option value="cleric">Cleric</option>
+          <option value="enchanter">Enchanter</option>
+          <option value="sorcerer">Sorcerer</option>
+          <option value="archer">Archer</option>
+          <option value="assassin">Assassin</option>
+          <option value="life">Life</option>
+          <option value="shadow">Shadow</option>
+          <option value="rune">Rune</option>
+          <option value="templar">Templar</option>
+          <option value="attacker">Attacker</option>
+          <option value="gunner">Gunner</option>
+        </select>
+        <br />
+        Level: <input id="level" type="text" name="level" size="2.5" value="1"><br />
+        <br />
+        Bonus Points: <span id="bonus_points" class="result">0</span><br />
+        <br />
+        <div id="stat_selectors">
+          <div class="left stat_names">
+            <ul>
+              <li>STR:</li>
+              <li>CON:</li>
+              <li>DEX:</li>
+              <li>INT:</li>
+              <li>WIS:</li>
+            </ul>
+          </div>
+          <div class="right">
+            <ul>
+              <li><select name="str" id="str" class="stat_selector"></select></li>
+              <li><select name="con" id="con" class="stat_selector"></select></li>
+              <li><select name="dex" id="dex" class="stat_selector"></select></li>
+              <li><select name="int" id="int" class="stat_selector"></select></li>
+              <li><select name="wis" id="wis" class="stat_selector"></select></li>
+            </ul>
+          </div>
+        </div>
+        <br class="clr"/>
+      </form>
+      <br />
+      <!-- HP: <span id="status_hp" class="result">0</span><br/> -->
+      <!-- Defense: <span id="status_defense" class="result">0</span><br/> -->
+      <!-- Magic Power: <span id="status_magic_power" class="result">0</span><br /> -->
+      <br />
+      Skill Points: <span id="status_skill_points" class="result">0</span>
+    </article>
+
+    <footer>
+    <p>Brought to you by <i>Soul-Hunter</i> and <i>Alis</i></p>
+    </footer>
+  </body>
+</html>

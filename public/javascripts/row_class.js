@@ -39,7 +39,7 @@ RowClass.prototype.calculateAndSetBonusPoints = function( ) {
   if(this.lvl < 10) {
     this.bonusPoints = 0;
   } else {
-    this.bonusPoints = (((this.lvl -1) * 4) + 10);
+    this.bonusPoints = (((this.lvl - 1) * 2) + 10);
     this.bonusPoints = this.bonusPoints -
       this.usedBPStr() -
       this.usedBPCon() -
@@ -141,7 +141,7 @@ RowClass.prototype.calculateStats = function( ) {
 ////---- Calculate HP ----//
 //
 //Formula:
-//  
+//
 //  HP = Base HP + Class HP
 //
 //  BASE HP = 250 + (50 * level) + ((CON-20) * 0.2 * Level) + ((DEX-20) * 0.05 * Level)
@@ -158,7 +158,7 @@ RowClass.prototype.calculateStats = function( ) {
 //  Note that right now Ichzilla doesn't take in consideration any
 //  kind of ability.
 //
-//this is the Base HP calculation. 
+//this is the Base HP calculation.
 RowClass.prototype.calculateHP = function( ) {
   return Math.floor(250 + (50 * this.lvl) + ((this.con - 20) * 0.2 * this.lvl) + ((this.dex - 20) * 0.05 * this.lvl));
 }
@@ -166,7 +166,7 @@ RowClass.prototype.calculateHP = function( ) {
 ////---- Calculate DEFENSE ----//
 //
 //Formula:
-//  
+//
 //  Armor Class Bonus: Defender/Warrior/Priest/Cleric/Templar/Attacker: 0.3 (con)
 //  Armor Class Bonus: Life: 0.3 (dex)
 //  Armor Class Bonus: All other classes: 0
@@ -181,7 +181,7 @@ RowClass.prototype.calculateDefense = function( ) {
 ////---- Calculate DEFENSE PERCENTAGE ----//
 //
 //Formula:
-//  
+//
 //  Defense %: ( ( 99 * Armor / 4 ) / ( armor / 4 + 50 ) * 100 ) / 100
 //
 //source: ADM-Brown
@@ -193,7 +193,7 @@ RowClass.prototype.calculateDefensePercentage = function( ) {
 ////---- Calculate MAGIC POWER ----//
 //
 //Formula:
-//  
+//
 //  Caster classes:
 //  magic = ((INT - 20) * 3.1) + ((WIS - 20) * 2)
 //
@@ -221,7 +221,7 @@ RowClass.prototype.calculateMagicPower = function( ) {
 //  MagicRes Class Bonus: Acolyte/Priest/Cleric/Life: 3
 //  MagicRes Class Bonus: Sorcerer/Enchanter/Rune: 3.2
 //  MagicRes Class Bonus: All other classes: 0
-//  
+//
 //  MagicRes = ((INT - 20) + (WIS - 20)) * MagicRes Class Bonus
 //
 //  Magic Res %: ( ( INT + WIS * 0.8 ) + MAIN CLASS STAT * MagicRes Class Bonus ) + ( ( 99 * ( MagicRes * 0.85 ) ) / ( ( MagicRes * 0.85 ) + 50 ) * 100 ) / 100 - 2
@@ -249,7 +249,7 @@ RowClass.prototype.calculateMagicResistance = function( ) {
 // pDmgRed = (99 * def / 4) / (def / 4 + 50);
 //
 //create function to calculate it
-// 
+//
 //The output from this formula is reduction of Physical Damage in %. (The value that shows next to the "defvalue" in-game.)
 
 //---- Calculate CRITICAL CHANCE REDUCTION ----//
@@ -259,7 +259,7 @@ RowClass.prototype.calculateMagicResistance = function( ) {
 // critRed = (50 * (evasion-300) / 4) / ((evasion-300) / 4 + 125);
 //
 //create function to calculate it
-// 
+//
 //The output from this formula is reduction of critical in %. (The value that shows when you mouseOver "Evasionvalue" in-game.)
 
 //---- Calculate CRITICAL CHANCE ----//
@@ -269,7 +269,7 @@ RowClass.prototype.calculateMagicResistance = function( ) {
 // critChance = (99 * crit / 2) / (crit / 2 + 100);
 //
 //create function to calculate it
-// 
+//
 //The output from this formula is Criticalchance in %. (The value that shows when you mouseOver "Critical-value" in-game.)
 //
 //Sources for all these formulas is an msn-conversation with ADM-Black
@@ -277,20 +277,20 @@ RowClass.prototype.calculateMagicResistance = function( ) {
 
 
 RowClass.prototype.toString = function( ) {
-  return "Class Name: Row Class, Level: " + this.lvl + 
+  return "Class Name: Row Class, Level: " + this.lvl +
     ", Bonus Points: " + this.bonusPoints +
     ", Stats: {str: " + this.str +
-    ", con: " + this.con + 
+    ", con: " + this.con +
     ", dex: " + this.dex +
     ", int: " + this.inte +
     ", wis: " + this.wis + "}" +
     ", MIN Stats: {str: " + this.minStr +
-    ", con: " + this.minCon + 
+    ", con: " + this.minCon +
     ", dex: " + this.minDex +
     ", int: " + this.minInte +
     ", wis: " + this.minWis + "}" +
     ", MAX Stats: {str: " + this.maxStr +
-    ", con: " + this.maxCon + 
+    ", con: " + this.maxCon +
     ", dex: " + this.maxDex +
     ", int: " + this.maxInte +
     ", wis: " + this.maxWis + "}";
